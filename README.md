@@ -1,9 +1,11 @@
 <div dir="rtl">
 
-# 🪐 قالب رزومهٔ تعاملی «مدار» — Orbit Resume Template
+# 🪐 قالب رزومه تعاملی «مدار» — Orbit Resume Template (v1.0.0)
 
 یک قالب رزومهٔ **تک‌فایله، تعاملی و راست‌چین (فارسی)** بدون هیچ کتابخانه و وابستگی خارجی.
 فقط فایل `index.html` را باز کنید؛ رزومهٔ شما آمادهٔ نمایش، خروجی PDF و ارسال در پیام‌رسان‌هاست.
+
+🔗 **[مشاهدهٔ نمونهٔ پُر (دمو)](https://fictaland.github.io/resume-demo/)** ← ببینید خروجی نهایی چه شکلی است
 
 ---
 
@@ -16,6 +18,7 @@
 - 📱 واکنش‌گرا (موبایل و دسکتاپ)
 - 🇮🇷 کاملاً فارسی و راست‌چین
 - 📦 بدون وابستگی — فقط یک فایل HTML
+- 🔐 کاملاً خصوصی — تمام اطلاعات فقط در مرورگر خودتان ذخیره می‌شود و به هیچ سروری ارسال نمی‌شود
 
 ---
 
@@ -41,6 +44,19 @@
 3. متن «خلاصه حرفه‌ای»
 4. بخش‌های مهارت‌ها، سوابق شغلی، تحصیلات و گواهی‌ها
 
+> 💡 به‌زودی یک **ویرایشگر گرافیکی** به قالب اضافه می‌شود تا بدون نیاز به ویرایش کد، اطلاعات خود را وارد کنید.
+
+---
+
+## 🗺️ نقشهٔ توسعه
+
+| نسخه | ویژگی | وضعیت |
+|---|---|---|
+| v1.0.0 | نسخهٔ پایه | ✅ منتشر شد |
+| v1.1.0 | افزودن ویرایشگر داخلی با فیلدهای فارسی | 🔜 در دست توسعه |
+| v1.2.0 | افکت‌های صوتی و انیمیشن پیشرفته | 📋 برنامه‌ریزی‌شده |
+| v2.0.0 | پشتیبانی از زبان انگلیسی | 📋 برنامه‌ریزی‌شده |
+
 ---
 
 ## 🙋‍♂️ دربارهٔ سازنده
@@ -63,7 +79,9 @@
 <details>
 <summary>English Summary</summary>
 
-**Orbit Resume Template** — a single-file, dependency-free, interactive RTL (Persian) resume template.
+**Orbit Resume Template (v1.0.0)** — a single-file, dependency-free, interactive RTL (Persian) resume template.
+
+**🔗 [View Filled Demo](https://fictaland.github.io/resume-demo/)**
 
 **Features:**
 - Light/dark mode
@@ -71,8 +89,9 @@
 - Built-in PDF & PNG export
 - Fully responsive
 - No external dependencies
+- Privacy-first: all data stored locally in your browser
 
-**Live demo** will be available soon via GitHub Pages.
+**Roadmap:** v1.1.0 will add a built-in Persian editor form. v2.0.0 will add English language support.
 
 **License:** MIT
 
