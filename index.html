@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Orbit Resume Template — v1.1.0 -->
+<!-- Orbit Resume Template — v1.6.0 -->
 <!--
   راهنمای سریع (برای کسانی که دانش فنی ندارند):
   ۱) این فایل را در مرورگر باز کنید و دکمه‌ی «✏️ ویرایش اطلاعات» (پایین-راست صفحه) را بزنید.
@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <script>
 /* ✏️ داده‌های رزومه — برای شخصی‌سازی فقط همین بلوک را ویرایش کنید */
-const VERSION="1.1.0";
+const VERSION="1.6.0";
 /*DATA_START*/const DATA = {
   /* راهنما: ساده‌ترین راه، دکمه‌ی «✏️ ویرایش اطلاعات» پایین صفحه است؛ نیازی به ویرایش این بخش نیست.
      اگر خواستید دستی ویرایش کنید: فقط متن بین "" و عددها را عوض کنید و ساختار (کلیدها و کروشه‌ها) را نگه دارید. */
@@ -28,13 +28,14 @@ const VERSION="1.1.0";
   "profiles": {
     "default": {
       "role": "", "printRole": "", "summary": "",
+      "intro": "",   /* متن معرفی اول‌شخص برای «معرفی من» (اختیاری؛ اگر خالی باشد، خلاصه نمایش داده می‌شود) */
       "chips": [],   /* برچسب‌های کوتاه */
       "kw": [],      /* کلیدواژه‌های مهارتی */
       "order": null, "printOrder": null
     }
   },
   "activeProfileKey": "default",
-  "stats": [],       /* [{ "value": "", "label": "", "short": "" }] */
+  "stats": [],       /* [{ "value": "", "label": "", "short": "", "detail": "" }] */
   "timeline": [],    /* [{ "date": "", "title": "", "org": "", "desc": "" }] */
   "education": [],   /* [{ "degree": "", "school": "", "from": "", "to": "" }] */
   "research": [],    /* [{ "title": "", "venue": "", "year": "", "coauthor": "", "url": "" }] */
@@ -54,174 +55,12 @@ const VERSION="1.1.0";
     "disclaimer": ""
   },
   "contact": [],     /* [{ "type":"phone|whatsapp|telegram|email|linkedin|website","label":"","value":"","href":"","cta":"" }] */
-  /* «فرآیند»: دانشنامه‌ی فرآیندهای کاری (محتوای پیش‌فرض عمومی است؛ از پنل ویرایش قابل تغییر، حذف و افزودن است) */
-  "process": {
-   "concepts": {
-    "ats": {
-     "title": "ATS",
-     "sub": "سامانه‌ی ردیابی متقاضیان",
-     "paras": [
-      "ATS مخفف Applicant Tracking System، یعنی سامانه‌ی ردیابی متقاضیان، نرم‌افزاری است که سازمان‌ها برای جمع‌آوری و مدیریت رزومه‌ها و پیگیری هر متقاضی در طول فرآیند جذب به کار می‌برند. رزومه‌های رسیده را در یک پایگاه داده نگه می‌دارد، اطلاعات آن‌ها (نام، سوابق، مهارت‌ها) را استخراج می‌کند و به مسئول جذب اجازه می‌دهد بر اساس کلیدواژه و معیار جست‌وجو و فیلتر کند. هر متقاضی در یکی از مرحله‌های مشخص قرار دارد (دریافت رزومه، بررسی اولیه، مصاحبه، پیشنهاد کاری، رد یا استخدام) و سامانه سابقه‌ی پیام‌ها، زمان مصاحبه‌ها و یادداشت‌های ارزیابی را ثبت می‌کند.",
-      "این سامانه خودش تصمیم نمی‌گیرد؛ کارش نظم دادن و سریع‌تر کردن بررسی است. اما چون رزومه اول با آن خوانده و دسته‌بندی می‌شود، شکل رزومه اهمیت پیدا می‌کند: ساختار ساده و تک‌ستونه، عنوان‌های استاندارد (سوابق، مهارت‌ها، تحصیلات)، متن واقعی قابل انتخاب به‌جای تصویر و جدول، و کلیدواژه‌هایی که با شرح شغل آگهی هم‌خوان باشد. برای همین، کنار این نسخه‌ی تعاملی یک نسخه‌ی متنی ساده هم برای ارسال به‌عنوان رزومه در نظر گرفته شده است."
-     ]
-    },
-    "headhunting": {
-     "title": "Head Hunting",
-     "sub": "جذب فعال و هدفمند",
-     "paras": [
-      "هدهانتینگ (شکار استعداد) روشی فعال در جذب است که در آن سازمان یا یک شرکت تخصصی، به‌جای انتظار برای رسیدن رزومه به آگهی، خودش سراغ فرد مناسب می‌رود؛ معمولاً کسی که شاغل است و دنبال کار نمی‌گردد (متقاضی منفعل). بیشتر برای نقش‌های ارشد، تخصصی یا کم‌یاب به کار می‌رود که با آگهی عمومی به‌سختی پر می‌شوند.",
-      "روند کار معمولاً این است: تعریف دقیق مشخصات فرد مطلوب، شناسایی شرکت‌ها و افراد هدف، تماس محرمانه و محترمانه (از راه شبکه‌ی حرفه‌ای، معرفی یا بسترهایی مثل لینکدین)، ارزیابی تناسب و در پایان مذاکره‌ی پیشنهاد. هزینه و زمان بیشتری از آگهی دارد و رعایت محرمانگی و تعهدات قراردادی فرد در شرکت فعلی‌اش (مانند تعهد عدم جذب) بخشی از حرفه‌ای‌گری آن است. در عوض، راه رسیدن به کسانی را باز می‌کند که هیچ‌وقت به آگهی پاسخ نمی‌دهند."
-     ]
-    },
-    "recruiting": {
-     "title": "Recruiting",
-     "sub": "جذب و تأمین متقاضیان",
-     "paras": [
-      "Recruiting یعنی فرایند جذب و تأمین متقاضی برای یک فرصت شغلی؛ از لحظه‌ای که نیاز به نیرو مشخص می‌شود تا وقتی که فهرستی از متقاضیانِ بررسی‌شده برای ارزیابی آماده است. کار آن این است که تعداد کافی از افراد واجد شرایط را به مرحله ارزیابی برساند؛ تصمیم نهایی با این مرحله نیست.",
-      "در محیط صنعتی این مرحله معمولاً با محدودیت‌هایی روبه‌رو است: نقش‌های فنی و شیفتی، محل کار دور از شهر، شرایط احراز مشخص (مثل سابقه کار مرتبط یا گواهی‌های ایمنی) و زمان‌بندی فشرده پروژه. برای همین کیفیت شرح شغل و انتخاب درست کانال‌های جذب، تعیین‌کننده است."
-     ]
-    },
-    "selection": {
-     "title": "Selection",
-     "sub": "ارزیابی و انتخاب گزینه مناسب",
-     "paras": [
-      "Selection مرحله‌ای است که از میان متقاضیانِ جذب‌شده، مناسب‌ترین گزینه ارزیابی و انتخاب می‌شود. ابزارهای معمول آن بررسی رزومه، مصاحبه، آزمون یا نمونه‌کار و بررسی سوابق و معرف‌هاست. اصل مهم این است که همه متقاضیان با معیارهای یکسان و از پیش تعیین‌شده سنجیده شوند.",
-      "تفاوتش با Recruiting در هدف است: Recruiting کیفیت و تعداد ورودی را تأمین می‌کند و Selection از میان آن‌ها تصمیم می‌گیرد. تصمیم نهایی معمولاً مشترک است؛ مسئول جذب ارزیابی را مستند می‌کند و مدیر واحد و مدیریت منابع انسانی در چارچوب اختیاراتشان تصمیم می‌گیرند."
-     ]
-    },
-    "sourcing": {
-     "title": "Sourcing",
-     "sub": "کانال‌ها و روش‌های یافتن متقاضی",
-     "paras": [
-      "Sourcing یعنی شناسایی و پیدا کردن متقاضی بالقوه از کانال‌های مختلف. کانال‌های رایج شامل آگهی در سایت‌های کاریابی، بانک رزومه‌ی سازمان یا پلتفرم‌ها، شبکه‌های حرفه‌ای مثل لینکدین، معرفی نیرو توسط کارکنان و آشنایان کاری، دانشگاه‌ها و مراکز فنی‌وحرفه‌ای و رزومه‌های قبلی سازمان است.",
-      "انتخاب کانال به نوع نقش بستگی دارد. برای نقش‌های عملیاتی و کارگاهی معمولاً کانال‌های محلی و معرفی نیرو کاراترند و برای نقش‌های تخصصی‌تر، جست‌وجو در شبکه‌های حرفه‌ای و بانک رزومه. ثبت منبع هر متقاضی هم کمک می‌کند بعداً معلوم شود کدام کانال برای کدام نقش بهتر جواب داده است."
-     ]
-    },
-    "cbi": {
-     "title": "مصاحبه شایستگی‌محور",
-     "sub": "Competency-Based Interview و الگوی STAR",
-     "paras": [
-      "در مصاحبه شایستگی‌محور، به‌جای سؤال‌های کلی یا فرضی، از متقاضی خواسته می‌شود نمونه‌های واقعی از گذشته‌ی کاری‌اش را تعریف کند؛ چون رفتار گذشته معمولاً بهترین نشانه‌ی رفتار آینده است. شایستگی‌های موردنیاز نقش (مثل کار تیمی، مسئولیت‌پذیری، رعایت ایمنی یا حل مسأله) از قبل مشخص می‌شود و برای هرکدام یک یا چند سؤال رفتاری آماده می‌شود، مثل «موقعیتی را تعریف کنید که ...».",
-      "الگوی STAR برای ساختار دادن به پاسخ‌هاست: Situation (موقعیت)، Task (وظیفه‌ای که بر عهده بود)، Action (اقدامی که خود فرد انجام داد) و Result (نتیجه). مصاحبه‌گر با این چهار بخش بررسی می‌کند پاسخ چقدر مشخص و قابل راستی‌آزمایی است و سهم واقعی خود فرد کجاست. استفاده از یک برگه‌ی ارزیابی ثابت برای همه‌ی متقاضیان، مقایسه را منصفانه‌تر می‌کند."
-     ]
-    },
-    "onboarding": {
-     "title": "Onboarding",
-     "sub": "ورود و استقرار نیروی جدید",
-     "paras": [
-      "Onboarding مجموعه‌ی اقداماتی است که از پذیرش پیشنهاد کار تا استقرار اولیه‌ی نیروی جدید انجام می‌شود: تکمیل مدارک و پرونده، تنظیم قرارداد، معرفی به سرپرست و همکاران، آموزش‌های ورودی (به‌ویژه ایمنی در محیط صنعتی)، تحویل تجهیزات و دسترسی‌ها و روشن کردن انتظارات دوره‌ی اولیه.",
-      "ارتباطش با جذب این است که تجربه‌ی نیروی جدید از همان گفت‌وگوهای اولیه شروع می‌شود؛ شفاف بودن شرایط کار در مرحله‌ی پیشنهاد، ورود را روان‌تر می‌کند. بخشی از این کار، مثل تشکیل پرونده و قرارداد، به امور پرسنلی می‌رسد و بخشی مثل آموزش و معرفی، به واحد مربوط."
-     ]
-    },
-    "socialization": {
-     "title": "جامعه‌پذیری سازمانی",
-     "sub": "آشنایی تدریجی با فرهنگ و روابط کاری",
-     "paras": [
-      "جامعه‌پذیری سازمانی فرایندی تدریجی است که در آن فرد جدید با فرهنگ، هنجارها، شیوه‌ی ارتباط و روابط کاری سازمان آشنا می‌شود و جای خود را در آن پیدا می‌کند. این کار فقط با یک جلسه‌ی معارفه یا دفترچه‌ی قوانین انجام نمی‌شود؛ بیشتر از طریق تعامل روزمره، تجربه‌ی همکاران و دیدن اینکه کارها واقعاً چگونه انجام می‌شود شکل می‌گیرد.",
-      "در عمل، معرفی یک همکار راهنما، توضیح صریح انتظارات و مسیر گزارش‌دهی و فرصت پرسیدن در هفته‌های اول به این فرایند کمک می‌کند و می‌تواند روی ماندگاری و عملکرد نیروی جدید اثر بگذارد."
-     ]
-    },
-    "application": {
-     "title": "فرم درخواست استخدام",
-     "sub": "Application Form",
-     "paras": [
-      "فرم درخواست استخدام (Application Form) برگه‌ی استانداردی است که متقاضی پیش از مصاحبه آن را پر می‌کند و اطلاعات همه را به یک قالب یکسان درمی‌آورد: مشخصات و راه ارتباطی، تحصیلات، سوابق شغلی (سازمان، سمت، مدت، دلیل ترک کار)، مهارت‌ها و گواهی‌ها، انتظار حقوق، آمادگی برای شروع، وضعیت نظام وظیفه (اگر شغل لازم دارد) و معرف. چون همه‌ی فرم‌ها هم‌شکل‌اند، مقایسه‌ی متقاضیان ساده‌تر از مقایسه‌ی رزومه‌هایی است که هرکدام شکل خودشان را دارند.",
-      "ارزش اصلی فرم پیش از مصاحبه است. از روی آن می‌شود فاصله‌های زمانی در سابقه، دلیل جابه‌جایی‌ها، تناسب انتظار حقوق و شرایط شغل (شیفت، محل کار، زمان شروع) و تناسب مدارک با شرایط احراز را همان‌جا فهمید و سؤال‌های مشخص آماده کرد. رزومه فقط چیزی را نشان می‌دهد که متقاضی انتخاب کرده بنویسد؛ فرم همان سؤال‌ها را از همه می‌پرسد. دو نکته مهم است: فقط اطلاعاتی بپرسید که به شغل ربط دارد و از اطلاعات شخصی متقاضی مراقبت کنید؛ و بعد از انتخاب، اطلاعات فرم را با مدارک و سوابق تطبیق دهید."
-     ]
-    }
-   },
-   "areas": [
-    {
-     "key": "hiring",
-     "icon": "🔄",
-     "title": "جذب و استخدام",
-     "sub": "از نیازسنجی تا ورود به سازمان",
-     "concepts": [
-      "recruiting",
-      "selection",
-      "sourcing",
-      "headhunting",
-      "ats",
-      "application",
-      "cbi",
-      "onboarding",
-      "socialization"
-     ],
-     "steps": [
-      {
-       "title": "نیازسنجی و شرح شغل",
-       "short": "پیش از هر آگهی روشن می‌شود دقیقاً چه کسی و با چه شرایطی لازم است.",
-       "points": [
-        "شناسایی نیاز استخدامی و هماهنگی با واحد درخواست‌کننده",
-        "تعیین عنوان شغلی، تعداد نیروی موردنیاز و شرایط احراز",
-        "تدوین یا بررسی شرح وظایف و شایستگی‌های موردنیاز",
-        "تعیین معیارهای ارزیابی و اولویت‌های غربالگری"
-       ],
-       "exp": "",
-       "concepts": [
-        "recruiting"
-       ]
-      },
-      {
-       "title": "تأمین و غربالگری متقاضیان",
-       "short": "متقاضیان از چند کانال پیدا می‌شوند و با معیارهای مشخص برای مصاحبه فیلتر می‌شوند.",
-       "points": [
-        "تأمین متقاضی از آگهی‌های استخدامی، بانک رزومه، شبکه ارتباطی و معرفی نیرو",
-        "بررسی رزومه‌ها و تطبیق آن‌ها با شرایط احراز؛ معیارها از قبل به «ضروری» و «مطلوب» تقسیم می‌شوند",
-        "ارسال فرم درخواست استخدام برای تکمیل؛ اطلاعات مهم (سابقه، انتظار حقوق، زمان شروع، شیفت) پیش از مصاحبه روشن می‌شود",
-        "غربالگری اولیه با معیارها و فیلترهای مشخص و مقایسه‌ی متقاضیان در یک جدول ساده",
-        "ثبت، دسته‌بندی و پیگیری وضعیت هر متقاضی؛ در سازمان‌هایی که ATS دارند، در همان سامانه"
-       ],
-       "exp": "",
-       "concepts": [
-        "sourcing",
-        "headhunting",
-        "ats",
-        "application"
-       ]
-      },
-      {
-       "title": "مصاحبه و ارزیابی",
-       "short": "مصاحبه بر پایه شایستگی‌های شغل و شواهد رفتاری انجام و مستند می‌شود.",
-       "points": [
-        "برنامه‌ریزی و هماهنگی مصاحبه‌ها",
-        "مرور فرم تکمیل‌شده پیش از مصاحبه و آماده کردن سؤال‌های مشخص: فاصله‌های سابقه، دلیل ترک کار قبلی، انتظار حقوق، آمادگی شروع",
-        "مصاحبه شایستگی‌محور با نمونه‌های واقعی گذشته و الگوی STAR برای ساختاربندی پاسخ‌ها",
-        "امتیازدهی هر شایستگی با یک فرم ثابت برای همه‌ی متقاضیان، همراه با ثبت شواهد و مستندسازی بازخورد",
-        "پرهیز از خطاهای رایج: اثر هاله (یک ویژگی خوب همه‌چیز را خوب نشان دهد)، شباهت به مصاحبه‌گر و تصمیم بر پایه اولین برداشت"
-       ],
-       "exp": "",
-       "concepts": [
-        "cbi",
-        "selection",
-        "application"
-       ]
-      },
-      {
-       "title": "انتخاب و ورود به سازمان",
-       "short": "نتیجه ارزیابی جمع‌بندی، پیشنهاد کاری اعلام و ورود نیروی جدید هماهنگ می‌شود.",
-       "points": [
-        "جمع‌بندی نتایج ارزیابی و هماهنگی تصمیم نهایی",
-        "اعلام نتیجه و ارائه پیشنهاد همکاری در چارچوب اختیارات سازمان",
-        "شفاف‌سازی انتظارات درباره حقوق، مزایا، قرارداد، شیفت و شرایط کار",
-        "پیگیری پذیرش پیشنهاد و هماهنگی اقدامات پیش از ورود",
-        "تطبیق اطلاعات فرم با مدارک و سوابق (مدرک تحصیلی، سوابق بیمه، گواهی‌ها) پیش از ورود",
-        "ورود پایان استخدام نیست؛ آغاز Onboarding و جامعه‌پذیری سازمانی است"
-       ],
-       "exp": "",
-       "concepts": [
-        "onboarding",
-        "socialization"
-       ]
-      }
-     ]
-    }
-   ]
-  }
+  /* نمایش دکمه‌های «ابزارها» و «فرآیندها» در صفحهٔ اصلی (محتوای آن‌ها ثابت و عمومی است): true = نمایش، false = پنهان */
+  "features": { "tools": true, "process": true }
 };/*DATA_END*/
 /* ───────────── از اینجا به پایین را تغییر ندهید (بارگذاری و پاک‌سازی داده‌ها) ───────────── */
 const ORBIT_STORE_KEY='orbit-data-v1';
-const ORBIT_MAPS={'profiles':1,'process.concepts':1,'certificates.printIssuerLabel':1};
+const ORBIT_MAPS={'profiles':1,'certificates.printIssuerLabel':1};
 function orbitClone(o){return JSON.parse(JSON.stringify(o));}
 function orbitMerge(b,s,path){
   path=path||'';
@@ -295,13 +134,16 @@ const ACTIVE_PROFILE_KEY=(function(){
 <meta property="og:description" id="ogDesc" content="">
 <meta name="twitter:card" content="summary_large_image">
 <!-- پیش‌نمایش لینک (تلگرام، واتساپ، لینکدین): بعد از آپلود فایل روی هاست، آدرس کامل را جایگزین کنید و کامنت را بردارید.
+<link rel="canonical" href="https://YOUR-DOMAIN/">
 <meta property="og:url" content="https://YOUR-DOMAIN/">
 <meta property="og:image" content="https://YOUR-DOMAIN/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 -->
-<script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem('ro-theme-m')}catch(e){}
-var th=t||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');d.setAttribute('data-theme',th);d.style.setProperty('--t',th==='light'?1:0);
+<script>/* start defaults */
+var START_DEFAULTS={theme:'dark',speed:1,haptic:true,gyro:true,glow:0.5,galaxy:100,orbits:50,constellation:0};
+(function(){var d=document.documentElement;
+var th=START_DEFAULTS.theme;d.setAttribute('data-theme',th);d.style.setProperty('--t',th==='light'?1:0);d.style.setProperty('--glw',START_DEFAULTS.glow);d.style.setProperty('--orb',START_DEFAULTS.orbits/100);d.style.setProperty('--gal',START_DEFAULTS.galaxy/100);
 var lite=matchMedia('(pointer:coarse)').matches||(navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=4;
 d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('ro-font')}catch(e){}d.setAttribute('data-font',fn==='nazanin'?'nazanin':'vazir');d.style.setProperty('--f',fn==='nazanin'?0:1);})()</script>
 <script type="application/ld+json" id="personJsonLd">{"@context":"https://schema.org","@type":"Person"}</script>
@@ -641,7 +483,7 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   .in-tl-item:last-child{padding-bottom:0;}
   .in-tl-item::before{content:"";position:absolute;inset-inline-start:-28px;top:6px;width:16px;height:16px;
     border-radius:50%;background:var(--bg-0);border:2px solid var(--p-intro);}
-  .in-tl-item:last-child::before{background:var(--p-intro);box-shadow:0 0 14px 3px rgba(110,198,255,.55);}
+  .in-tl-item:last-child::before{background:var(--p-intro);box-shadow:0 0 calc(14px * var(--glw,.5)) calc(3px * var(--glw,.5)) rgba(110,198,255,calc(.55 * var(--glw,.5)));}
   .in-tl-date{font-size:11.5px;color:var(--p-intro);}
   .in-tl-title{font-size:14px;font-weight:700;color:var(--t1);line-height:1.7;}
   .in-tl-org{font-size:12.5px;color:var(--t2);line-height:1.7;}
@@ -678,6 +520,9 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   .settings-btn{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;
     background:var(--fill);border:1px solid var(--fill-line);color:var(--star);backdrop-filter:blur(4px);}
   .settings-btn:focus-visible{outline:2px solid var(--p-intro);outline-offset:2px;}
+  .settings-btn{display:block;}
+  .settings-cap{display:block;width:44px;margin-top:3px;text-align:center;white-space:nowrap;font-size:10.5px;line-height:1.3;color:var(--dim);pointer-events:none;}
+  .ver-tag{position:fixed;left:12px;top:calc(12px + var(--safe-t) + 47px);font-size:10.5px;line-height:1.3;color:var(--dim);direction:ltr;unicode-bidi:isolate;pointer-events:none;}
   .settings-panel{position:absolute;top:calc(100% + 8px);right:0;width:min(260px, calc(100vw - 24px));display:flex;flex-direction:column;z-index:1;gap:4px;
     padding:10px;border-radius:16px;background:var(--float-bg);border:1px solid var(--fill-line);
     box-shadow:0 10px 30px rgba(0,0,0,.4);backdrop-filter:blur(8px);}
@@ -703,13 +548,13 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   .s-speed{padding:4px 12px 8px;color:var(--star);}
   .s-speed-head{display:flex;align-items:center;justify-content:space-between;font-size:14px;margin-bottom:6px;}
   .s-speed-head output{font-weight:700;font-size:13px;direction:ltr;}
-  #speedRange{-webkit-appearance:none;appearance:none;width:100%;height:30px;margin:0;background:transparent;direction:ltr;touch-action:none;cursor:pointer;}
-  #speedRange::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(to right,var(--p-intro) var(--fill-pct,50%),var(--fill-h) var(--fill-pct,50%));}
-  #speedRange::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:var(--star);border:3px solid var(--p-intro);box-shadow:0 2px 6px rgba(0,0,0,.35);}
-  #speedRange::-moz-range-track{height:6px;border-radius:3px;background:var(--fill-h);}
-  #speedRange::-moz-range-progress{height:6px;border-radius:3px;background:var(--p-intro);}
-  #speedRange::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--star);border:3px solid var(--p-intro);}
-  #speedRange:focus-visible{outline:2px solid var(--p-intro);outline-offset:4px;border-radius:8px;}
+  #speedRange,#glowRange,#conRange,#galRange,#orbRange{-webkit-appearance:none;appearance:none;width:100%;height:30px;margin:0;background:transparent;direction:ltr;touch-action:none;cursor:pointer;}
+  #speedRange::-webkit-slider-runnable-track,#glowRange::-webkit-slider-runnable-track,#conRange::-webkit-slider-runnable-track,#galRange::-webkit-slider-runnable-track,#orbRange::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(to right,var(--p-intro) var(--fill-pct,50%),var(--fill-h) var(--fill-pct,50%));}
+  #speedRange::-webkit-slider-thumb,#glowRange::-webkit-slider-thumb,#conRange::-webkit-slider-thumb,#galRange::-webkit-slider-thumb,#orbRange::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:var(--star);border:3px solid var(--p-intro);box-shadow:0 2px 6px rgba(0,0,0,.35);}
+  #speedRange::-moz-range-track,#glowRange::-moz-range-track,#conRange::-moz-range-track,#galRange::-moz-range-track,#orbRange::-moz-range-track{height:6px;border-radius:3px;background:var(--fill-h);}
+  #speedRange::-moz-range-progress,#glowRange::-moz-range-progress,#conRange::-moz-range-progress,#galRange::-moz-range-progress,#orbRange::-moz-range-progress{height:6px;border-radius:3px;background:var(--p-intro);}
+  #speedRange::-moz-range-thumb,#glowRange::-moz-range-thumb,#conRange::-moz-range-thumb,#galRange::-moz-range-thumb,#orbRange::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--star);border:3px solid var(--p-intro);}
+  #speedRange:focus-visible,#glowRange:focus-visible,#conRange:focus-visible,#galRange:focus-visible,#orbRange:focus-visible{outline:2px solid var(--p-intro);outline-offset:4px;border-radius:8px;}
   .s-ticks{display:flex;justify-content:space-between;direction:ltr;font-size:11px;color:var(--dim);margin-top:2px;}
   .settings-panel .motion-toggle:hover{background:var(--fill-h);}
   
@@ -909,7 +754,7 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   html[data-theme] .ring-inner{border-style:solid !important;border-width:1px !important;border-color:var(--ink-line) !important;filter:none !important;opacity:1;}
   html[data-theme] #ringwrap-skills .ring-inner,html[data-theme] #ringwrap-jobs .ring-inner{border-style:dashed !important;}
   html[data-theme] .sun{background:var(--acc2);box-shadow:0 0 0 4px var(--bg-0),0 0 0 5.5px var(--acc2),0 0 0 11px var(--bg-0),0 0 0 12px var(--ink-line);}
-  html[data-theme] .planet::before{inset:-14%;background:none;border:1px solid var(--acc);border-radius:50%;opacity:calc(var(--prox,0) * .95);transform:scale(calc(.85 + var(--prox,0) * .25));}
+  html[data-theme] .planet::before{inset:-14%;background:none;border:1px solid var(--acc);border-radius:50%;opacity:calc(var(--prox,0) * .95 * var(--glw,.5));transform:scale(calc(.85 + var(--prox,0) * .25));}
   html[data-theme] .planet .ball{border-radius:50%;background:var(--panel);border:1.5px solid var(--ink-line);color:var(--acc);filter:none;box-shadow:0 0 0 3px var(--bg-0);}
   html[data-theme] .planet .label{position:absolute;background:var(--panel);border:1px solid var(--ink-line);border-radius:3px;box-shadow:none;text-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:3px 9px;color:var(--t1);font-weight:700;}
   html[data-theme] .planet .label::before{content:"";position:absolute;top:-9px;left:50%;width:1px;height:8px;background:var(--ink-line);}
@@ -918,7 +763,6 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   .iss-ico .ic,.ct-ico .ic,.jb-ico .ic{width:56%;height:56%;vertical-align:baseline;}
   html[data-theme] .st-name{font-size:22px;font-weight:800;letter-spacing:-.2px;}
   html[data-theme] .st-role{display:inline-block;font-size:13px;font-weight:700;color:var(--acc);border-top:1px solid var(--ink-line);padding-top:3px;margin-top:5px;}
-  .sheet-tag{margin-inline-start:auto;font-size:11px;line-height:1.6;padding:2px 9px;border:1px solid var(--ink-line);color:var(--dim);white-space:nowrap;}
   html[data-theme] .card,html[data-theme] .card:not(.in-hero),html[data-theme] .card.ci-head,html[data-theme] .sk-list .card,html[data-theme] .iss-card,html[data-theme] .ct-item,html[data-theme] .card.ct-item{
     position:relative;overflow:visible;background:var(--panel) !important;border:1px solid var(--ink-line) !important;border-radius:4px !important;box-shadow:none !important;}
   html[data-theme] .card::before,html[data-theme] .iss-card::before,html[data-theme] .ct-item::before,html[data-theme] .sk-list .card::before{
@@ -1025,12 +869,13 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   .pr-concept,.pr-card{padding:0;}
   #backBtn{white-space:nowrap;flex:none;}
   /* ===== orbit rings: independent spin, visible sweep arc, alternating pulsing glow; settings gear turns in place ===== */
-  .ring-inner::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:2px solid rgb(var(--acc-rgb));pointer-events:none;
+  .ring-inner::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:2px solid rgb(var(--acc-rgb));pointer-events:none;opacity:var(--orb,.5);
     -webkit-mask:conic-gradient(from 0deg,transparent 0deg 285deg,#000 345deg 360deg);mask:conic-gradient(from 0deg,transparent 0deg 285deg,#000 345deg 360deg);}
   .ring-inner::after{content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;opacity:0;
     box-shadow:0 0 12px 2px rgba(var(--acc-rgb),.6),inset 0 0 12px 1px rgba(var(--acc-rgb),.35);
-    animation:ringGlow 3.6s ease-in-out infinite;animation-play-state:inherit;animation-delay:var(--gd,0s);}
-  @keyframes ringGlow{0%,100%{opacity:0;}50%{opacity:1;}}
+    }
+ .ring-inner.glowing::after{animation:ringGlow var(--gdur,2.4s) ease-in-out 1 both;}
+  @keyframes ringGlow{0%,100%{opacity:0;}50%{opacity:var(--orb,.5);}}
   /* phones use the lite mode: no blur on big shapes, so the halo is a soft gradient band painted once (only its opacity pulses) */
   html[data-q="lite"] .ring-inner::after{inset:-10px;box-shadow:none;border:0;
     background:radial-gradient(closest-side,transparent calc(100% - 20px),rgba(var(--acc-rgb),.5) calc(100% - 10px),transparent 100%);}
@@ -1039,13 +884,56 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   html.mpaused .settings-btn .ic{animation-play-state:paused;}
   @media (prefers-reduced-motion:reduce){
     .ring-inner::before{display:none;}
-    .ring-inner::after{animation:none;opacity:0;}
+    .ring-inner::after,.ring-inner.glowing::after{animation:none;opacity:0;}
     .settings-btn .ic{animation:none;}
   }
+  /* glow lever (--glw): chart bars, skill dots and step numbers glow in proportion */
+  html[data-theme] .bar-fill:not(.avg){box-shadow:0 0 calc(14px * var(--glw,.5)) calc(1px * var(--glw,.5)) rgba(var(--acc-rgb),calc(.7 * var(--glw,.5)));}
+  html[data-theme] .sk-dots i.on{box-shadow:0 0 calc(9px * var(--glw,.5)) rgba(var(--acc-rgb),calc(.85 * var(--glw,.5)));}
+  html[data-theme] .pr-num{box-shadow:0 0 calc(12px * var(--glw,.5)) rgba(var(--acc-rgb),calc(.6 * var(--glw,.5)));}
+  /* simple view: the way back is the first and most prominent thing, centred on top */
+  html[data-theme] .sv-bar{flex-direction:column;align-items:center;gap:8px;}
+  html[data-theme] .sv-actions{justify-content:center;}
+  html[data-theme] .sv-bar #svBack{align-self:center;justify-content:center;min-width:min(80vw,270px);font-size:14.5px;font-weight:800;padding:10px 20px;
+    background:var(--acc);color:var(--bg-0);border-color:var(--acc);}
+  html[data-theme] .sv-bar #svBack:hover{background:color-mix(in srgb,var(--acc) 85%,#fff);}
+  /* settings button frame: a very faint glow that follows the glow lever (--glw) */
+  html[data-theme] .settings-btn{
+    box-shadow:0 0 calc(12px * var(--glw,.5)) rgba(var(--acc-rgb),calc(.3 * var(--glw,.5))), inset 0 0 calc(6px * var(--glw,.5)) rgba(var(--acc-rgb),calc(.12 * var(--glw,.5)));
+    border-color:color-mix(in srgb,var(--fill-line) calc((1 - var(--glw,.5) * .35) * 100%),var(--acc) calc(var(--glw,.5) * .35 * 100%));}
+  /* settings: theme, vibration and gyroscope on top; everything else in cascading drawers behind a visible handle */
+  .s-handle,.s-drawer>summary{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;border:1px solid var(--ink-line);border-radius:3px;
+    background:var(--fill);color:var(--star);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;text-align:start;}
+  .s-handle{border-style:dashed;}
+  .s-drawer>summary::-webkit-details-marker{display:none;}
+  .s-handle:hover,.s-drawer>summary:hover{background:var(--fill-h);}
+  .s-handle:focus-visible,.s-drawer>summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px;}
+  .s-grip{flex:none;width:18px;height:2px;border-radius:1px;background:currentColor;box-shadow:0 -5px 0 currentColor,0 5px 0 currentColor;opacity:.75;}
+  .s-chev{flex:none;margin-inline-start:auto;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s ease;}
+  .s-handle[aria-expanded="true"] .s-chev,.s-drawer[open]>summary .s-chev{transform:rotate(-135deg) translateY(-2px);}
+  .s-more{display:grid;gap:8px;margin-top:8px;}
+  .s-more[hidden]{display:none;}
+  .s-more:not([hidden]) .s-drawer{animation:drawerIn .32s ease both;animation-delay:calc(var(--i,0) * 110ms);}
+  @keyframes drawerIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:none;}}
+  .s-drawer-body{padding:8px 2px 4px;}
+  @media (prefers-reduced-motion:reduce){.s-more:not([hidden]) .s-drawer{animation:none;}}
+  /* hierarchy: "more settings" is the parent (header of a framed group); the two drawers are indented, lighter children joined by a tree line */
+  .s-handle{padding:13px 12px;font-size:14.5px;font-weight:800;color:var(--t1);}
+  .s-handle[aria-expanded="true"]{border-style:solid;border-color:var(--acc);color:var(--acc);border-bottom-left-radius:0;border-bottom-right-radius:0;background:rgba(var(--acc-rgb),.08);margin-bottom:-4px;}
+  .s-more{position:relative;margin-top:0;padding:12px 10px 12px;border:1px solid var(--acc);border-top:0;border-radius:0 0 3px 3px;gap:10px;}
+  .s-more::before{content:"";position:absolute;inset-inline-start:16px;top:0;bottom:26px;width:2px;background:var(--acc);opacity:.55;}
+  .s-more .s-drawer{position:relative;margin-inline-start:30px;}
+  .s-more .s-drawer::before{content:"";position:absolute;inset-inline-start:-14px;top:19px;width:14px;height:2px;background:var(--acc);opacity:.55;}
+  .s-more .s-drawer>summary{padding:9px 10px;font-size:12.5px;font-weight:700;background:transparent;border-color:var(--line);color:var(--t2);}
+  .s-more .s-drawer>summary:hover{background:var(--fill);}
+  .s-more .s-drawer[open]>summary{border-color:var(--ink-line);color:var(--t1);}
+  .s-more .s-grip{display:none;}
+  .s-more .s-drawer>summary::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--acc);}
+  .s-more .s-chev{width:6px;height:6px;}
 /* fallback for browsers without color-mix(): fixed palettes per theme, discrete label colours */
 @supports not (color:color-mix(in srgb,red 50%,blue)){
   :root{--bg-0:#070b14;--bg-1:#0d1526;--star:#eef1f6;--dim:#8892a6;--panel:#0f1830;--p-intro:#6ec6ff;--p-skills:#4fd1c5;--p-certs:#b794f4;--p-jobs:#f6857d;--p-self:#8b93e0;--p-contact:#f472b6;--t1:#fff;--t2:#dce1ee;--t3:#cfd6e6;--line:rgba(255,255,255,.12);--fill:rgba(255,255,255,.06);--fill-h:rgba(255,255,255,.12);--fill-line:rgba(255,255,255,.14);--card-line:rgba(255,255,255,.08);--bar-avg:rgba(255,255,255,.32);--float-bg:rgba(15,24,48,.9);--float-bg-h:rgba(15,24,48,1);--chip-t:#bfe4ff;--acc:#3fd2c6;--acc2:#e9b44c;--ink-line:rgba(232,241,242,.40);--grid:rgba(232,241,242,.045);--grid2:rgba(232,241,242,.085);}
-  html[data-theme="light"]{--bg-0:#d7e4f6;--bg-1:#eef4ff;--star:#14213b;--dim:#586a88;--panel:#f3f7ff;--p-intro:#0b78c2;--p-skills:#0d8f83;--p-certs:#7443c4;--p-jobs:#d24b41;--p-self:#4650bd;--p-contact:#c22c83;--t1:#0d1a33;--t2:#2a3a58;--t3:#34456a;--line:rgba(20,40,90,.14);--fill:rgba(20,40,90,.06);--fill-h:rgba(20,40,90,.12);--fill-line:rgba(20,40,90,.2);--card-line:rgba(20,40,90,.1);--bar-avg:rgba(20,40,90,.28);--float-bg:rgba(238,244,255,.96);--float-bg-h:#eef4ff;--chip-t:#0b6aa8;--acc:#0c8078;--acc2:#b06f0e;--ink-line:rgba(22,35,43,.46);--grid:rgba(22,35,43,.06);--grid2:rgba(22,35,43,.11);}
+  html[data-theme="light"]{--bg-0:#d7e4f6;--bg-1:#eef4ff;--star:#14213b;--dim:#586a88;--panel:#f3f7ff;--p-intro:#0b78c2;--p-skills:#0d8f83;--p-certs:#7443c4;--p-jobs:#d24b41;--p-self:#4650bd;--p-contact:#c22c83;--t1:#0d1a33;--t2:#2a3a58;--t3:#34456a;--line:rgba(20,40,90,.14);--fill:rgba(20,40,90,.06);--fill-h:rgba(20,40,90,.12);--fill-line:rgba(20,40,90,.2);--card-line:rgba(20,40,90,.1);--bar-avg:rgba(20,40,90,.28);--float-bg:rgba(238,244,255,.96);--float-bg-h:#eef4ff;--chip-t:#0b6aa8;--acc:#096f68;--acc2:#b06f0e;--ink-line:rgba(22,35,43,.46);--grid:rgba(22,35,43,.06);--grid2:rgba(22,35,43,.11);}
   .s-opt{color:var(--star);}
   html[data-theme="light"] .s-light,html[data-theme="dark"] .s-dark,
   .s-font[aria-checked="false"] .s-fa,.s-font[aria-checked="true"] .s-fb,
@@ -1060,9 +948,40 @@ d.setAttribute('data-q',lite?'lite':'full');var fn;try{fn=localStorage.getItem('
   #startHint.gone{display:none;}
   .st-simple{pointer-events:auto;background:none;border:0;padding:2px 4px;font:inherit;color:var(--p-intro);text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
   .st-simple:focus-visible{outline:2px solid var(--p-intro);outline-offset:2px;border-radius:4px;}
-  .home-stats{position:fixed;bottom:calc(68px + var(--safe-b));left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;width:max-content;max-width:calc(100vw - 20px);pointer-events:none;}
-  .home-stats span{font-size:11.5px;padding:3px 9px;border-radius:999px;background:var(--fill);border:1px solid var(--fill-line);color:var(--t2);white-space:nowrap;}
-  .home-stats b{color:var(--sun);font-weight:700;}
+  .home-stats{position:fixed;bottom:calc(68px + var(--safe-b));left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-wrap:wrap;gap:9px;justify-content:center;width:max-content;max-width:calc(100vw - 16px);pointer-events:none;}
+  .stat{pointer-events:auto;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:70px;min-height:52px;padding:7px 12px;border-radius:17px;font:inherit;color:var(--t2);cursor:pointer;-webkit-tap-highlight-color:transparent;
+    background:linear-gradient(160deg,rgba(245,185,66,.20),rgba(255,255,255,.05));border:1px solid rgba(245,185,66,.42);
+    box-shadow:0 4px 14px rgba(0,0,0,.22);animation:statBreath 3.4s ease-in-out infinite;}
+  .stat b{font-size:17px;line-height:1.25;font-weight:800;color:var(--sun);}
+  .stat small{font-size:10.5px;line-height:1.3;}
+  .stat::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;box-shadow:0 0 16px 3px rgba(245,185,66,.6);opacity:.12;animation:statGlow 3.4s ease-in-out infinite;}
+  .stat:nth-child(2),.stat:nth-child(2)::after{animation-delay:.85s;} .stat:nth-child(3),.stat:nth-child(3)::after{animation-delay:1.7s;} .stat:nth-child(4),.stat:nth-child(4)::after{animation-delay:2.55s;}
+  .stat:hover,.stat:focus-visible,.stat:active{animation:none;transform:scale(1.09);}
+  .stat:hover::after,.stat:focus-visible::after,.stat:active::after{animation:none;opacity:1;}
+  .stat:focus-visible{outline:2px solid var(--sun);outline-offset:3px;}
+  #stage.hidden .stat,#stage.hidden .stat::after{animation-play-state:paused;}
+  @keyframes statBreath{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  @keyframes statGlow{0%,100%{opacity:.1;}50%{opacity:.95;}}
+  @media (prefers-reduced-motion:reduce){ .stat,.stat::after{animation:none;} .stat::after{opacity:.3;} }
+  html[data-theme="light"] .stat{background:linear-gradient(160deg,rgba(245,170,40,.30),rgba(255,255,255,.6));border-color:rgba(190,120,10,.5);box-shadow:0 4px 12px rgba(150,100,20,.18);}
+  html[data-theme="light"] .stat b{color:#8a5200;}
+  html[data-theme="light"] .stat::after{box-shadow:0 0 16px 3px rgba(235,150,20,.55);}
+
+  #statOv{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(4,8,16,.58);}
+  #statOv[hidden]{display:none;}
+  .st-card{position:relative;width:min(92vw,430px);padding:26px 22px 20px;border-radius:24px;text-align:center;outline:none;
+    background:linear-gradient(150deg,rgba(245,185,66,.18),rgba(255,255,255,.04) 55%),var(--float-bg);border:1px solid rgba(245,185,66,.45);box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.18);}
+  .st-num{font-size:46px;line-height:1.2;font-weight:800;color:var(--sun);}
+  .st-num.zero{font-size:72px;line-height:1;}
+  .st-card h3{margin:2px 0 10px;font-size:17px;color:var(--t1);}
+  .st-card p{margin:0 0 18px;font-size:14.5px;line-height:2.05;color:var(--t2);text-align:justify;text-align-last:center;}
+  .st-x{position:absolute;top:8px;inset-inline-start:10px;width:34px;height:34px;border-radius:50%;border:0;background:var(--fill);color:var(--t1);font-size:22px;line-height:1;cursor:pointer;}
+  .st-home{font:inherit;font-size:14px;padding:10px 18px;border-radius:999px;border:0;cursor:pointer;background:var(--star);color:var(--bg-0);font-weight:700;}
+  .st-x:focus-visible,.st-home:focus-visible{outline:2px solid var(--sun);outline-offset:2px;}
+  html[data-theme="light"] #statOv{background:rgba(20,40,80,.35);}
+  html[data-theme="light"] .st-num{color:#8a5200;}
+  html[data-theme="light"] .st-card{background:linear-gradient(150deg,rgba(245,170,40,.22),rgba(255,255,255,.7) 60%),var(--panel);border-color:rgba(190,120,10,.45);}
+  @media print{ #statOv,.home-stats{display:none !important;} }
   @media (max-height:560px){ .home-stats,#startHint{display:none;} }
   .settings-btn{opacity:.55;transition:opacity .2s;}
   .settings-btn:hover,.settings-btn:focus-visible,.settings-btn[aria-expanded="true"]{opacity:1;}
@@ -1145,6 +1064,112 @@ html[data-theme] .ct-item{position:relative;padding-bottom:40px !important;}
 html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(10.5px,3.4vw,14.5px);}
 .ct-item > .ct-go{position:absolute;left:18px;bottom:9px;padding:1px 12px;border:1px solid var(--ink-line);border-radius:3px;font-weight:700;line-height:1.8;}
 
+/* back button stays at the top while scrolling.
+   Simple view: only the back button is sticky (the contact / PDF buttons scroll away with the page).
+   Inner pages: the top bar never scrolls; once the page is scrolled the long title folds away and only the back button stays. */
+.sv-top{position:sticky;position:-webkit-sticky;top:0;z-index:3;display:flex;justify-content:center;padding:calc(8px + var(--safe-t)) 14px 8px;background:var(--float-bg);border-bottom:1px solid var(--line);}
+html[data-theme] .sv-bar{position:static;background:none;border-bottom:0;padding:10px 14px 0;}
+.sv-top .back-btn{position:static;display:inline-flex;align-items:center;text-decoration:none;white-space:nowrap;}
+html[data-theme] .sv-top #svBack{justify-content:center;min-width:min(80vw,270px);font-size:14.5px;font-weight:800;padding:8px 20px;background:var(--acc);color:var(--bg-0);border-color:var(--acc);}
+html[data-theme] .sv-top #svBack:hover{background:color-mix(in srgb,var(--acc) 85%,#fff);}
+#surface .surface-title{max-width:100%;transition:opacity .2s ease,max-width .25s ease;}
+#surface.scrolled .surface-title{opacity:0;max-width:0;overflow:hidden;white-space:nowrap;pointer-events:none;}
+#surface.scrolled .top-bar{margin-bottom:10px;gap:0;}
+
+/* constellation picker + its own glow slider */
+.s-seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;border:1px solid var(--fill-line);background:var(--fill);border-radius:3px;}
+.s-seg button{font:inherit;font-size:12.5px;padding:8px 2px;border:0;border-radius:3px;background:transparent;color:var(--t2);cursor:pointer;white-space:nowrap;}
+.s-seg button[aria-checked="true"]{background:var(--star);color:var(--bg-0);font-weight:700;}
+.s-seg button:focus-visible{outline:2px solid var(--acc);outline-offset:1px;}
+#conGlowBox.dis{opacity:.45;}
+
+/* constellation layer: independent from the galaxy switch */
+#conLayer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+#conLayer canvas{position:absolute;inset:0;}
+
+/* settings gear turns the same way as the planets (setting "جهت حرکت") */
+html[data-rot="ccw"] .settings-btn .ic{animation-direction:reverse;}
+/* hold the gear and drag: the panel unrolls under the finger */
+.settings-btn{touch-action:none;}
+.settings-panel.sp-drag,.settings-panel.sp-anim{clip-path:inset(0 0 calc((1 - var(--sp,1))*100%) 0);opacity:calc(.3 + .7*var(--sp,1));transform:translateY(calc((var(--sp,1) - 1)*16px));}
+.settings-panel.sp-anim{transition:clip-path .24s ease,opacity .24s ease,transform .24s ease;}
+/* centre photo: tap = 30% bigger for two seconds */
+.sun{cursor:pointer;pointer-events:auto;transition:scale .35s cubic-bezier(.3,.7,.3,1);}
+.sun.zoom{scale:1.3;z-index:3;}
+.sun:focus-visible{outline:2px solid var(--acc);outline-offset:4px;}
+/* call guard (outside 08:00-18:00) */
+.cg{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);}
+.cg[hidden]{display:none;}
+.cg-box{max-width:330px;padding:16px;border:1px solid var(--ink-line);border-radius:4px;background:var(--panel);color:var(--t1);font-size:14px;line-height:2;}
+.cg-box p{margin:0;}
+.cg-act{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.cg-act .back-btn{width:100%;justify-content:center;text-decoration:none;}
+
+/* galaxy: one slider (0 = off) scales nebula, stars, twinkles and comet together */
+#galaxy{opacity:var(--gal,1);}
+/* home buttons: processes + tools on the first row, contact + GitHub on the second */
+/* one row: processes, tools, contact, GitHub (compact so four fit on a phone) */
+.home-actions{flex-wrap:nowrap;justify-content:center;gap:5px;width:calc(100vw - 16px);max-width:440px;}
+html[data-theme] .home-actions .back-btn{flex:0 1 auto;min-width:0;min-height:40px;padding:0 9px;gap:5px;font-size:12.5px;white-space:nowrap;}
+html[data-theme] .home-actions .back-btn .ic{width:15px;height:15px;}
+@media (max-width:359px){ html[data-theme] .home-actions .back-btn .ic{display:none;} }
+/* bigger touch targets without changing how things look */
+.planet::after{content:"";position:absolute;inset:-12px;border-radius:50%;}
+.st-simple{padding:13px 4px;margin:-13px -4px;}
+/* tools page */
+.tl-list{display:grid;gap:10px;}
+.tl-item h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px;}
+.tl-open{width:100%;font:inherit;color:inherit;text-align:start;cursor:pointer;}
+.tl-badge.ok{color:var(--acc,var(--p-intro));border-color:var(--acc,var(--p-intro));}
+/* insurance calculator: one screen, only the input table scrolls */
+.surface-body.fit{display:flex;flex-direction:column;overflow:hidden;min-height:0;padding-bottom:calc(66px + var(--safe-b,0px));}
+.ins{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;}
+.ins-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;font-size:12.5px;line-height:1.8;color:var(--t2);}
+.ins-top p{margin:0;}
+.ins-clear{flex:none;font:inherit;font-size:12px;padding:4px 11px;border:1px solid var(--ink-line,var(--fill-line));background:var(--fill);color:var(--t1);border-radius:3px;cursor:pointer;}
+.ins-table{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border:1px solid var(--ink-line,var(--fill-line));border-radius:3px;background:var(--panel);}
+.ins-table details+details{border-top:1px solid var(--ink-line,var(--fill-line));}
+.ins-table summary{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer;list-style:none;font-weight:700;font-size:14px;color:var(--t1);background:var(--panel);}
+.ins-table summary::-webkit-details-marker{display:none;}
+.ins-table summary::before{content:"▸";font-size:12px;color:var(--dim);transition:transform .15s;}
+.ins-table details[open]>summary::before{transform:rotate(90deg);}
+.ins-table summary span:first-of-type{flex:1;}
+.ins-sub{font-weight:400;font-size:12px;color:var(--dim);direction:ltr;unicode-bidi:isolate;}
+.ins-row{display:flex;align-items:center;gap:10px;padding:5px 12px;border-top:1px solid rgba(128,128,128,.16);}
+.ins-row label{flex:1;font-size:13.5px;color:var(--t2);}
+.ins-row input{width:min(48%,190px);font:inherit;font-size:15px;direction:ltr;text-align:left;padding:7px 9px;border:1px solid var(--ink-line,var(--fill-line));border-radius:3px;background:var(--fill);color:var(--t1);}
+.ins-row input:focus{outline:2px solid var(--acc,var(--p-intro));outline-offset:0;}
+.ins-res{margin:0;padding:6px 12px;list-style:none;border:1px solid var(--acc,var(--p-intro));border-radius:3px;background:var(--panel);}
+.ins-res li{display:flex;align-items:baseline;gap:8px;padding:5px 0;font-size:13px;color:var(--t2);}
+.ins-res li+li{border-top:1px dashed rgba(128,128,128,.28);}
+.ins-res .n{flex:none;width:16px;color:var(--dim);}
+.ins-res .k{flex:1;}
+.ins-res .v{font-size:15.5px;font-weight:700;color:var(--t1);direction:ltr;unicode-bidi:isolate;}
+.ins-res li:nth-child(n+3) .v{color:var(--acc,var(--p-intro));}
+.ins-res .u{font-size:10.5px;color:var(--dim);}
+.ins-hint{margin:0;padding:6px 12px 8px;font-size:12px;line-height:1.8;color:var(--dim);}
+.tx-ded{display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.7;color:var(--t2);cursor:pointer;}
+.tx-ded input{margin-top:4px;accent-color:var(--acc,var(--p-intro));}
+.tx-res{width:100%;border-collapse:collapse;border:1px solid var(--acc,var(--p-intro));background:var(--panel);font-size:12.5px;color:var(--t2);}
+.tx-res th{padding:5px 6px;font-size:11.5px;font-weight:700;color:var(--dim);border-bottom:1px solid var(--ink-line,var(--fill-line));}
+.tx-res td{padding:4px 6px;border-top:1px dashed rgba(128,128,128,.28);}
+.tx-res th:first-child,.tx-res td:first-child{text-align:start;}
+.tx-res td+td,.tx-res th+th{text-align:left;}
+.tx-res td+td{direction:ltr;unicode-bidi:isolate;white-space:nowrap;font-weight:700;color:var(--t1);}
+.tx-res tr.fin td{font-size:14px;color:var(--acc,var(--p-intro));border-top:1px solid var(--acc,var(--p-intro));}
+@media (max-height:660px){ .tx-res td{padding:2px 6px;} .tx-res{font-size:12px;} .tx-ded{font-size:11.5px;line-height:1.5;} }
+@media (max-height:660px){ .ins-res li{padding:3px 0;font-size:12px;} .ins-res .v{font-size:14px;} .ins-top{font-size:11.5px;line-height:1.6;} }
+main#app{display:contents;}
+/* the home buttons now take two rows: lift the stats chips above them and keep the hint text on its own line */
+#startHint{flex-basis:100%;text-align:center;}
+
+/* version label + "in progress" badges */
+.ver-line{margin-top:10px;text-align:center;font-size:11px;color:var(--dim);}
+.tl-item{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.tl-badge{flex:none;font-size:11px;padding:2px 9px;border:1px solid var(--ink-line);border-radius:999px;color:var(--dim);white-space:nowrap;}
+#simpleView .ver-line{margin-top:18px;padding-bottom:calc(16px + var(--safe-b,0px));}
+
+
 /* ===== template additions: placeholders, empty cards, in-page editor ===== */
 .st-name.ph,.st-role.ph{opacity:.55;}
 .sun-ini{font-weight:800;font-size:clamp(20px,5.2vmin,40px);color:#5a3500;line-height:1;letter-spacing:.02em;}
@@ -1153,7 +1178,7 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
 .empty-card .empty-ico{font-size:42px;line-height:1;margin-bottom:8px;}
 .empty-card h3{justify-content:center;}
 .empty-card .back-btn{margin:12px auto 0;display:inline-flex;}
-#svPhone[hidden],#svWhatsapp[hidden],#svEmail[hidden]{display:none !important;}
+#svPhone[hidden],#svWhatsapp[hidden],#svEmail[hidden],#svLink1[hidden],#svLink2[hidden]{display:none !important;}
 .no-js{padding:24px;text-align:center;color:#fff;background:#0d1526;}
 .pr-empty{color:#555;}
 .ver-note{text-align:center;opacity:.65;margin-top:10px;font-size:11px;}
@@ -1236,10 +1261,11 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
 
 
 <!-- GALAXY BACKGROUND (stars, nebula, twinkles, comet; switch in settings) -->
-<noscript><div class="no-js">برای دیدن این رزومه، جاوااسکریپت مرورگر باید فعال باشد.</div></noscript>
 <div id="galaxy" aria-hidden="true"><canvas id="galStatic"></canvas><canvas id="galFx"></canvas></div>
+<div id="conLayer" aria-hidden="true"><canvas id="conFx"></canvas></div>
 
 <!-- MAIN SOLAR SYSTEM -->
+<main id="app">
 <div id="stage">
   <div class="stage-title"><h1 class="st-name" style="margin:0"></h1><div class="st-role"></div><div class="st-hint"><span id="startHint">برای شروع روی یک سیاره بزنید</span> <button type="button" class="st-simple" id="simpleBtn">نمای ساده</button> <span class="st-dot" aria-hidden="true">·</span> <span class="st-dlwrap"><button type="button" class="st-simple" id="printBtn" aria-haspopup="true" aria-expanded="false" aria-controls="dlMenu">دانلود رزومه</button><div class="dl-menu" id="dlMenu" hidden>
       <button type="button" class="back-btn" id="dlPdf"><span>📕 فایل PDF<small>در پنجره باز‌شده «ذخیره به‌صورت PDF» را بزنید</small></span></button>
@@ -1249,47 +1275,16 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
   <div class="settings" id="settings">
     <div class="settings-backdrop" id="settingsBackdrop" hidden></div>
     <button type="button" class="settings-btn" id="settingsBtn" aria-label="تنظیمات" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPanel">⚙️</button>
+    <span class="settings-cap" aria-hidden="true">تنظیمات</span>
+    <span class="ver-tag" aria-hidden="true">v.1.6.0</span>
     <div class="settings-panel" id="settingsPanel" hidden>
       <div class="settings-title">تنظیمات</div>
+      <div class="s-speed-head" style="margin-bottom:8px;"><span>تم</span></div>
       <button type="button" class="s-theme" id="themeToggle" role="switch" aria-checked="true" aria-label="تغییر تم، تاریک یا روشن">
         <span class="s-thumb" aria-hidden="true"></span>
         <span class="s-opt s-light">☀️ روشن</span>
         <span class="s-opt s-dark">🌙 تاریک</span>
       </button>
-      <div class="s-sep"></div>
-      <div class="s-speed-head" style="margin-bottom:8px;"><span>فونت</span></div>
-      <button type="button" class="s-theme s-font" id="fontToggle" role="switch" aria-checked="false" aria-label="انتخاب فونت، بی‌نازنین یا وزیرمتن">
-        <span class="s-thumb" aria-hidden="true"></span>
-        <span class="s-opt s-fa" style="font-family:'BNazanin','Vazirmatn',sans-serif;">بی‌نازنین</span>
-        <span class="s-opt s-fb" style="font-family:'Vazirmatn',sans-serif;">وزیرمتن</span>
-      </button>
-      <div id="galRow">
-        <div class="s-sep"></div>
-        <div class="s-speed-head" style="margin-bottom:8px;"><span>کهکشان پس‌زمینه</span></div>
-        <button type="button" class="s-theme s-gal" id="galToggle" role="switch" aria-checked="true" aria-label="کهکشان پس‌زمینه شامل ستاره‌ها، چشمک و ستاره‌ی دنباله‌دار، روشن یا خاموش">
-          <span class="s-thumb" aria-hidden="true"></span>
-          <span class="s-opt s-gla">خاموش</span>
-          <span class="s-opt s-glb">روشن</span>
-        </button>
-      </div>
-      <details class="s-adv"><summary>حرکت و سرعت</summary>
-      <div class="s-sep"></div>
-      <button class="motion-toggle" id="toggleMotion" aria-label="توقف حرکت">
-    <span id="toggleMotionIcon">⏸️</span><span id="toggleMotionLabel">توقف حرکت</span>
-  </button>
-      <div class="s-sep"></div>
-      <div class="s-speed-head" style="margin-bottom:8px;"><span>جهت حرکت</span></div>
-      <button type="button" class="s-theme s-dir" id="dirToggle" role="switch" aria-checked="false" aria-label="جهت حرکت سیاره‌ها، ساعتگرد یا پادساعتگرد">
-        <span class="s-thumb" aria-hidden="true"></span>
-        <span class="s-opt s-da">ساعتگرد</span>
-        <span class="s-opt s-db">پادساعتگرد</span>
-      </button>
-      <div class="s-sep"></div>
-      <div class="s-speed" role="group" aria-label="سرعت چرخش">
-        <div class="s-speed-head"><span>سرعت چرخش</span><output id="speedVal">۱x</output></div>
-        <input type="range" id="speedRange" min="0.25" max="2" step="0.25" value="1" aria-label="سرعت چرخش">
-        <div class="s-ticks" aria-hidden="true"><span>۰٫۲۵x</span><span>۲x</span></div>
-      </div>
       <div id="hapticRow">
         <div class="s-sep"></div>
         <div class="s-speed-head" style="margin-bottom:8px;"><span>لرزش لمسی</span></div>
@@ -1311,9 +1306,77 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
         <div class="s-note" id="gyroNote" aria-live="polite"></div>
         <div class="s-status" id="gyroStatus"></div>
       </div>
-      </details>
-      <div class="s-note ver-note">قالب رزومه مداری · نسخه <span id="verTag" dir="ltr"></span></div>
-    </div>
+      <div class="s-sep"></div>
+      <button type="button" class="s-handle" id="moreHandle" aria-expanded="false" aria-controls="moreSettings"><span class="s-grip" aria-hidden="true"></span><span>تنظیمات بیشتر</span><span class="s-chev" aria-hidden="true"></span></button>
+      <div class="s-more" id="moreSettings" hidden>
+      <details class="s-drawer" style="--i:0"><summary><span class="s-grip" aria-hidden="true"></span><span>ظاهر و پس‌زمینه</span><span class="s-chev" aria-hidden="true"></span></summary>
+      <div class="s-drawer-body">
+      <div class="s-speed-head" style="margin-bottom:8px;"><span>فونت</span></div>
+      <button type="button" class="s-theme s-font" id="fontToggle" role="switch" aria-checked="false" aria-label="انتخاب فونت، بی‌نازنین یا وزیرمتن">
+        <span class="s-thumb" aria-hidden="true"></span>
+        <span class="s-opt s-fa" style="font-family:'BNazanin','Vazirmatn',sans-serif;">بی‌نازنین</span>
+        <span class="s-opt s-fb" style="font-family:'Vazirmatn',sans-serif;">وزیرمتن</span>
+      </button>
+      <div id="galRow">
+        <div class="s-sep"></div>
+        <div class="s-speed" role="group" aria-label="کهکشان پس‌زمینه">
+          <div class="s-speed-head"><span>کهکشان پس‌زمینه</span><output id="galVal">۱۰۰٪</output></div>
+          <input type="range" id="galRange" min="0" max="100" step="5" value="100" aria-label="روشنایی کهکشان و شهاب، از خاموش تا کامل">
+          <div class="s-ticks" aria-hidden="true"><span>خاموش</span><span>کامل</span></div>
+        </div>
+      </div>
+      <div id="conRow">
+        <div class="s-sep"></div>
+        <div class="s-speed-head" style="margin-bottom:8px;"><span>صورت فلکی پس‌زمینه</span></div>
+        <div class="s-seg" id="conSel" role="radiogroup" aria-label="انتخاب صورت فلکی پس‌زمینه">
+          <button type="button" role="radio" aria-checked="true" data-k="orion">جبار</button>
+          <button type="button" role="radio" aria-checked="false" data-k="ursa">دب اکبر</button>
+          <button type="button" role="radio" aria-checked="false" data-k="scorpius">عقرب</button>
+        </div>
+        <div class="s-speed" id="conGlowBox" role="group" aria-label="درخشش صورت فلکی" style="margin-top:12px;">
+          <div class="s-speed-head"><span>درخشش صورت فلکی</span><output id="conVal">خاموش</output></div>
+          <input type="range" id="conRange" min="0" max="100" step="5" value="0" aria-label="درخشش صورت فلکی، از خاموش تا کامل">
+          <div class="s-ticks" aria-hidden="true"><span>خاموش</span><span>کامل</span></div>
+        </div>
+      </div>
+      <div id="orbRow">
+          <div class="s-sep"></div>
+          <div class="s-speed" role="group" aria-label="مدارها">
+            <div class="s-speed-head"><span>مدارها (تپش و چرخش)</span><output id="orbVal">۵۰٪</output></div>
+            <input type="range" id="orbRange" min="0" max="100" step="5" value="50" aria-label="درخشش مدارها، از خاموش تا کامل">
+            <div class="s-ticks" aria-hidden="true"><span>خاموش</span><span>کامل</span></div>
+          </div>
+        </div>
+        <div class="s-sep"></div>
+      <div class="s-speed" role="group" aria-label="میزان درخشش">
+        <div class="s-speed-head"><span>میزان درخشش</span><output id="glowVal">۵۰٪</output></div>
+        <input type="range" id="glowRange" min="0" max="100" step="5" value="50" aria-label="میزان درخشش، از خاموش تا درخشان">
+        <div class="s-ticks" aria-hidden="true"><span>خاموش</span><span>درخشان</span></div>
+      </div>
+      </div></details>
+      <details class="s-drawer" style="--i:1"><summary><span class="s-grip" aria-hidden="true"></span><span>حرکت و سرعت</span><span class="s-chev" aria-hidden="true"></span></summary>
+      <div class="s-drawer-body">
+      <div class="s-speed-head" style="margin-bottom:8px;"><span>حرکت سیاره‌ها</span></div>
+      <button class="motion-toggle" id="toggleMotion" aria-label="توقف حرکت">
+    <span id="toggleMotionIcon">⏸️</span><span id="toggleMotionLabel">توقف حرکت</span>
+  </button>
+      <div class="s-sep"></div>
+      <div class="s-speed-head" style="margin-bottom:8px;"><span>جهت حرکت</span></div>
+      <button type="button" class="s-theme s-dir" id="dirToggle" role="switch" aria-checked="false" aria-label="جهت حرکت سیاره‌ها، ساعتگرد یا پادساعتگرد">
+        <span class="s-thumb" aria-hidden="true"></span>
+        <span class="s-opt s-da">ساعتگرد</span>
+        <span class="s-opt s-db">پادساعتگرد</span>
+      </button>
+      <div class="s-sep"></div>
+      <div class="s-speed" role="group" aria-label="سرعت چرخش">
+        <div class="s-speed-head"><span>سرعت چرخش</span><output id="speedVal">۱x</output></div>
+        <input type="range" id="speedRange" min="0.25" max="2" step="0.25" value="1" aria-label="سرعت چرخش">
+        <div class="s-ticks" aria-hidden="true"><span>۰٫۲۵x</span><span>۲x</span></div>
+      </div>
+      </div></details>
+      </div>
+      <div class="ver-line" aria-hidden="true"></div>
+</div>
   </div>
   <div id="system">
     <svg class="astro" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0.00 -48.60L0.00 -51.00M4.24 -48.42L4.33 -49.51M8.44 -47.86L8.63 -48.94M12.58 -46.94L12.86 -48.01M16.62 -45.67L17.00 -46.70M20.54 -44.05L21.00 -45.04M24.30 -42.09L25.50 -44.17M27.88 -39.81L28.51 -40.71M31.24 -37.23L31.95 -38.07M34.37 -34.37L35.14 -35.14M37.23 -31.24L38.07 -31.95M39.81 -27.88L40.71 -28.51M42.09 -24.30L44.17 -25.50M44.05 -20.54L45.04 -21.00M45.67 -16.62L46.70 -17.00M46.94 -12.58L48.01 -12.86M47.86 -8.44L48.94 -8.63M48.42 -4.24L49.51 -4.33M48.60 -0.00L51.00 -0.00M48.42 4.24L49.51 4.33M47.86 8.44L48.94 8.63M46.94 12.58L48.01 12.86M45.67 16.62L46.70 17.00M44.05 20.54L45.04 21.00M42.09 24.30L44.17 25.50M39.81 27.88L40.71 28.51M37.23 31.24L38.07 31.95M34.37 34.37L35.14 35.14M31.24 37.23L31.95 38.07M27.88 39.81L28.51 40.71M24.30 42.09L25.50 44.17M20.54 44.05L21.00 45.04M16.62 45.67L17.00 46.70M12.58 46.94L12.86 48.01M8.44 47.86L8.63 48.94M4.24 48.42L4.33 49.51M0.00 48.60L0.00 51.00M-4.24 48.42L-4.33 49.51M-8.44 47.86L-8.63 48.94M-12.58 46.94L-12.86 48.01M-16.62 45.67L-17.00 46.70M-20.54 44.05L-21.00 45.04M-24.30 42.09L-25.50 44.17M-27.88 39.81L-28.51 40.71M-31.24 37.23L-31.95 38.07M-34.37 34.37L-35.14 35.14M-37.23 31.24L-38.07 31.95M-39.81 27.88L-40.71 28.51M-42.09 24.30L-44.17 25.50M-44.05 20.54L-45.04 21.00M-45.67 16.62L-46.70 17.00M-46.94 12.58L-48.01 12.86M-47.86 8.44L-48.94 8.63M-48.42 4.24L-49.51 4.33M-48.60 0.00L-51.00 0.00M-48.42 -4.24L-49.51 -4.33M-47.86 -8.44L-48.94 -8.63M-46.94 -12.58L-48.01 -12.86M-45.67 -16.62L-46.70 -17.00M-44.05 -20.54L-45.04 -21.00M-42.09 -24.30L-44.17 -25.50M-39.81 -27.88L-40.71 -28.51M-37.23 -31.24L-38.07 -31.95M-34.37 -34.37L-35.14 -35.14M-31.24 -37.23L-31.95 -38.07M-27.88 -39.81L-28.51 -40.71M-24.30 -42.09L-25.50 -44.17M-20.54 -44.05L-21.00 -45.04M-16.62 -45.67L-17.00 -46.70M-12.58 -46.94L-12.86 -48.01M-8.44 -47.86L-8.63 -48.94M-4.24 -48.42L-4.33 -49.51"/><path d="M0.00 -22.00L11.00 19.05L-19.05 -11.00L22.00 -0.00L-19.05 11.00L11.00 -19.05L0.00 22.00L-11.00 -19.05L19.05 11.00L-22.00 0.00L19.05 -11.00L-11.00 19.05Z"/><path d="M0.00 -22.00L11.00 -19.05L19.05 -11.00L22.00 -0.00L19.05 11.00L11.00 19.05L0.00 22.00L-11.00 19.05L-19.05 11.00L-22.00 0.00L-19.05 -11.00L-11.00 -19.05Z"/><path d="M3.62 -13.52L3.62 13.52L-9.90 -9.90L13.52 3.62L-13.52 3.62L9.90 -9.90L-3.62 13.52L-3.62 -13.52L9.90 9.90L-13.52 -3.62L13.52 -3.62L-9.90 9.90Z"/><path d="M-50 0H50M0 -50V50" class="cross"/><path class="mk acc" d="M-1.7 -53.2L1.7 -53.2L0 -50.4Z"/></svg>
@@ -1324,7 +1387,7 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
     
     <div class="orbit-ring-wrap" id="ringwrap-self"><div class="ring-inner"></div></div>
 
-    <div class="sun" id="sunPhoto"></div>
+    <div class="sun" id="sunPhoto" role="button" tabindex="0" aria-label="بزرگ‌نمایی عکس"></div>
 
     <button class="planet p-intro" id="planet-intro" data-target="intro" aria-label="معرفی من">
       <span class="ball">🪪</span><span class="label">معرفی من</span>
@@ -1342,9 +1405,10 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
       <span class="ball">🧭</span><span class="label">خودشناسی حرفه‌ای</span>
     </button>
   </div>
-  <div class="home-stats" id="homeStats" aria-label="خلاصه دستاوردها"></div>
+  <div class="home-stats" role="group" aria-label="خلاصه دستاوردها (برای جزئیات بزنید)" id="homeStats"></div>
   <div class="home-actions">
     <button type="button" class="back-btn act-primary" id="procBtn">🔄 فرآیندها</button>
+    <button type="button" class="back-btn act-primary" id="toolsBtn">🧮 ابزارها</button>
     <button type="button" class="back-btn" id="contactBtn">📞 تماس با من</button>
     <button type="button" class="back-btn" id="ghBtn" aria-haspopup="true" aria-expanded="false" aria-controls="ghMenu">🐙 گیت‌هاب</button>
     <div class="dl-menu gh-menu" id="ghMenu" hidden>
@@ -1359,32 +1423,54 @@ html[data-theme] .ct-v{white-space:nowrap;overflow-wrap:normal;font-size:clamp(1
   <div class="surface-bg" id="surfaceBg"></div>
   <div class="top-bar">
     <button class="back-btn" id="backBtn">→ بازگشت</button>
-    <div class="surface-title" id="surfaceTitle"></div><div class="sheet-tag" id="sheetTag"></div>
+    <div class="surface-title" id="surfaceTitle"></div>
   </div>
   <div class="surface-body" id="surfaceBody"></div>
-  <button class="back-btn floating-back" id="backBtnBottom">🏠 صفحه اصلی</button>
+  <button class="back-btn floating-back" id="backBtnBottom" title="صفحه اصلی (کلید H)">🏠 صفحه اصلی</button>
 </div>
 
 <!-- SIMPLE VIEW (plain, no animation; for recruiters) -->
 <div id="simpleView" role="region" aria-label="نمای ساده رزومه">
+  <div class="sv-top"><button type="button" class="back-btn" id="svBack">→ بازگشت به نمایش تعاملی</button></div>
   <div class="sv-bar">
-    <button type="button" class="back-btn" id="svBack">→ نمای تعاملی</button>
     <div class="sv-actions">
-      <a class="back-btn" id="svPhone" href="#" hidden>📞 تماس</a>
-      <a class="back-btn" id="svWhatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>واتساپ</a>
-      <a class="back-btn" id="svEmail" href="#" hidden>ایمیل</a>
+      <a class="back-btn" id="svLink1" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
+      <a class="back-btn" id="svLink2" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
       <button type="button" class="back-btn act-primary" id="svPdf">📄 PDF</button>
     </div>
   </div>
   <article class="sv-doc"></article>
+  <div class="ver-line" aria-hidden="true"></div>
+</div>
+
+<!-- ACHIEVEMENT CARD (opens from the home stats) -->
+<div id="statOv" hidden>
+  <div class="st-card" role="dialog" aria-modal="true" aria-labelledby="stTitle" tabindex="-1">
+    <button type="button" class="st-x" id="stX" aria-label="بستن">×</button>
+    <div class="st-num" id="stNum"></div>
+    <h3 id="stTitle"></h3>
+    <p id="stText"></p>
+    <button type="button" class="st-home" id="stHome">🏠 بازگشت به صفحه اصلی</button>
+  </div>
 </div>
 
 <!-- ZOOM OVERLAY -->
+</main>
+<div id="callGuard" class="cg" role="dialog" aria-modal="true" aria-labelledby="cgText" hidden>
+  <div class="cg-box">
+    <p id="cgText">الان خارج از ساعت ۸ تا ۱۸ است. مطمئنید می‌خواهید همین حالا تماس بگیرید؟ در این ساعت‌ها پیام (واتساپ، تلگرام یا ایمیل) مناسب‌تر است.</p>
+    <div class="cg-act">
+      <a class="back-btn" id="cgWa" target="_blank" rel="noopener noreferrer">ارسال پیام در واتساپ</a>
+      <button type="button" class="back-btn" id="cgGo">با این حال تماس می‌گیرم</button>
+      <button type="button" class="back-btn" id="cgNo">انصراف</button>
+    </div>
+  </div>
+</div>
 <div id="zoomOverlay" role="dialog" aria-modal="true" aria-label="نمایش گواهی">
   <button class="close-zoom" id="closeZoom" aria-label="بستن">✕</button>
   <div class="zoom-inner" id="zoomInner"></div>
 </div>
-
+<noscript><div class="no-js">برای دیدن این رزومه، جاوااسکریپت مرورگر باید فعال باشد.</div></noscript>
 <div id="printResume" aria-hidden="true"></div><!--/printResume-->
 <script>
 /* ---------- orbit engine ---------- */
@@ -1528,14 +1614,14 @@ if(document.fonts && document.fonts.ready) document.fonts.ready.then(layoutSyste
 
 let motionPaused = false;
 let dirSign = 1; // 1 = clockwise, -1 = counter-clockwise (settings)
-let speedMul = 1; // 1 = normal; changed from the settings menu in 0.25 steps
+let speedMul = START_DEFAULTS.speed; // 1 = normal; changed from the settings menu in 0.25 steps
 const systemEl = document.getElementById('system');
 let _qDone = document.documentElement.dataset.q==='lite', _fLast = 0, _fSum = 0, _fN = 0;
 let mainElapsed = 0, mainLastT = null, tickOn = false, manualT = 0, dragRot = null, suppressClick = false;
 /* The loop only runs while the home screen is visible and the tab is active. */
 /* haptic tick when a planet reaches the pointer (setting ro-haptic; row hidden where navigator.vibrate is missing, e.g. iPhone) */
 const canVibrate = typeof navigator.vibrate === 'function';
-let hapticOn = true; try{ hapticOn = localStorage.getItem('ro-haptic') !== 'off'; }catch(e){}
+let hapticOn = START_DEFAULTS.haptic;
 const astroEl = document.querySelector('.astro');
 let _ptrLast = -1;
 function buzz(){ if(hapticOn && canVibrate){ try{ navigator.vibrate(12); }catch(e){} } }
@@ -1633,8 +1719,7 @@ document.getElementById('toggleMotion').addEventListener('click', ()=> setMotion
 
 { const gyroRow = document.getElementById('gyroRow'), gyroToggle = document.getElementById('gyroToggle'), gyroNote = document.getElementById('gyroNote');
   const needPerm = typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function';   // iPhone asks first
-  let gv = needPerm ? 0 : 1, gNoteT = 0;
-  try{ const sv = localStorage.getItem('ro-gyro'); if(sv && !needPerm) gv = sv === 'on' ? 1 : 0; }catch(e){}
+  let gv = needPerm ? 0 : (START_DEFAULTS.gyro ? 1 : 0), gNoteT = 0;
   function gNote(txt){
     clearTimeout(gNoteT);
     if(!txt){ gyroNote.classList.remove('show'); gNoteT = setTimeout(()=>{ gyroNote.textContent = ''; }, 350); return; }
@@ -1679,15 +1764,15 @@ document.getElementById('toggleMotion').addEventListener('click', ()=> setMotion
   setGyro(gv, false, false);
   bindSwitch(gyroToggle, '--g', ()=>gv, applyGyro);
   /* default = on. Android/desktop: already on. iPhone: the sensor needs a permission prompt that only a tap can trigger, so ask once on the first tap */
-  try{ if(needPerm && gyroCanSense && !localStorage.getItem('ro-gyro')){
-    const ask = ()=>{ document.removeEventListener('click', ask, true); try{ if(!localStorage.getItem('ro-gyro')) applyGyro(1, true); }catch(e){} };
+  if(needPerm && gyroCanSense && START_DEFAULTS.gyro){
+    const ask = ()=>{ document.removeEventListener('click', ask, true); applyGyro(1, true); };
     document.addEventListener('click', ask, true);
-  } }catch(e){}
+  }
 }
 
 /* ---------- galaxy background: static stars + nebula, a few twinkling stars, an occasional comet ---------- */
 { const gal = document.getElementById('galaxy'), cs = document.getElementById('galStatic'), cf = document.getElementById('galFx');
-  const xs = cs.getContext('2d'), xf = cf.getContext('2d'), galToggle = document.getElementById('galToggle');
+  const xs = cs.getContext('2d'), xf = cf.getContext('2d'), cc = document.getElementById('conFx'), xc = cc.getContext('2d');
   const root = document.documentElement, isLite = ()=>root.dataset.q === 'lite';
   let seed = 7; const rnd = ()=>{ seed = (seed*1664525 + 1013904223) >>> 0; return seed/4294967296; };   // fixed seed: stars never jump on resize
   const clamp01 = v => Math.min(1, Math.max(0, v));
@@ -1698,12 +1783,55 @@ document.getElementById('toggleMotion').addEventListener('click', ()=> setMotion
     return {x:clamp01(x), y:clamp01(y), r:.3 + rnd()*rnd()*1.3, a:.25 + rnd()*.65, ph:rnd()*6.28, w:.6 + rnd()*1.6, tw: i%21 === 0};
   });
   const TW = STARS.filter(s=>s.tw);
+  /* three famous constellations, simplified shapes: [x, y, brightness 0..1] and line pairs */
+  const CONS = {
+    orion:{ rot:-8, stars:[[.50,.06,.5],[.30,.20,1],[.72,.22,.8],[.40,.50,.8],[.51,.48,.9],[.62,.46,.7],[.33,.84,.7],[.76,.80,1],[.505,.60,.45],[.51,.68,.55]],
+            lines:[[0,1],[0,2],[1,3],[2,5],[3,4],[4,5],[3,6],[5,7],[4,8],[8,9]] },
+    ursa:{ rot:6, stars:[[.88,.28,1],[.84,.56,.8],[.60,.62,.7],[.56,.38,.6],[.38,.34,.9],[.22,.44,.8],[.06,.66,.8]],
+            lines:[[0,1],[1,2],[2,3],[3,0],[3,4],[4,5],[5,6]] },
+    scorpius:{ rot:-4, stars:[[.70,.10,.6],[.60,.18,.7],[.56,.28,.5],[.50,.42,1],[.44,.48,.5],[.38,.60,.7],[.32,.70,.5],[.34,.80,.5],[.44,.88,.6],[.56,.90,.8],[.64,.84,.5],[.68,.74,.6],[.72,.66,.9],[.76,.72,.7]],
+            lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,12],[12,13]] }
+  };
+  Object.values(CONS).forEach(C=>{ const xs = C.stars.map(s=>s[0]), ys = C.stars.map(s=>s[1]); C.wide = (Math.max(...xs)-Math.min(...xs)) > (Math.max(...ys)-Math.min(...ys))*1.3;
+    C.cx = (Math.min(...xs)+Math.max(...xs))/2; C.cy = (Math.min(...ys)+Math.max(...ys))/2; C.span = Math.max(Math.max(...xs)-Math.min(...xs), Math.max(...ys)-Math.min(...ys)); });
+  let conKey = 'orion', conGlow = START_DEFAULTS.constellation;   // starts OFF; glow 0..100 (0 = off)
+  try{ const k = localStorage.getItem('ro-const'); if(CONS[k]) conKey = k; }catch(e){}
+  function drawCon(now, col, t){
+    const C = CONS[conKey]; if(!C || conGlow <= 0) return;
+    const g = conGlow/100, lite = isLite(), portrait = H > W*1.15;
+    /* wide shapes (the Big Dipper) are turned upright on phones so they can be drawn much larger; then fit the shape into ~92% x 64% of the screen (below the title, above the bottom buttons) */
+    const rot = (C.rot + (portrait && C.wide ? -80 : 0))*Math.PI/180, co = Math.cos(rot), si = Math.sin(rot);
+    const R0 = C.stars.map(s=>{ const dx = s[0]-C.cx, dy = s[1]-C.cy; return [dx*co - dy*si, dx*si + dy*co, s[2]]; });
+    const rx = R0.map(s=>s[0]), ry = R0.map(s=>s[1]), rw = Math.max(...rx)-Math.min(...rx), rh = Math.max(...ry)-Math.min(...ry), mx = (Math.max(...rx)+Math.min(...rx))/2, my = (Math.max(...ry)+Math.min(...ry))/2;
+    const sc = Math.min(W*.92/rw, H*.64/rh), cx = W/2, cy = H*.5;
+    const hal = Math.round(190 + (12-190)*t)+','+Math.round(215 + (128-215)*t)+','+Math.round(255 + (120-255)*t);
+    const P = R0.map(s=>[cx + (s[0]-mx)*sc, cy + (s[1]-my)*sc, s[2]]);
+    xc.strokeStyle = 'rgba('+col+','+(.2 + .16*Math.min(g,1.6)).toFixed(3)+')'; xc.lineWidth = 1.2; xc.beginPath();
+    C.lines.forEach(l=>{ xc.moveTo(P[l[0]][0], P[l[0]][1]); xc.lineTo(P[l[1]][0], P[l[1]][1]); }); xc.stroke();
+    P.forEach((p, i)=>{
+      const m = p[2], pulse = .86 + .14*Math.sin(now/1000*(.8 + m) + i), a = Math.min(1, (.35 + .5*m)*g*pulse), R = (7 + 16*m)*(.5 + .5*Math.min(g,2));
+      if(lite){ xc.fillStyle = 'rgba('+hal+','+(a*.22).toFixed(3)+')'; xc.beginPath(); xc.arc(p[0], p[1], R*.6, 0, 6.283); xc.fill(); }
+      else { const gr = xc.createRadialGradient(p[0], p[1], 0, p[0], p[1], R); gr.addColorStop(0, 'rgba('+hal+','+(a*.6).toFixed(3)+')'); gr.addColorStop(1, 'rgba('+hal+',0)');
+             xc.fillStyle = gr; xc.beginPath(); xc.arc(p[0], p[1], R, 0, 6.283); xc.fill(); }
+      xc.fillStyle = 'rgba('+col+','+Math.min(1, .6 + .4*g*m).toFixed(3)+')'; xc.beginPath(); xc.arc(p[0], p[1], 1.2 + 1.6*m, 0, 6.283); xc.fill();
+      if(m > .85 && g > 1){ xc.strokeStyle = 'rgba('+col+','+(.35*(g-1)).toFixed(3)+')'; xc.lineWidth = .8; xc.beginPath();
+        xc.moveTo(p[0]-R*.9, p[1]); xc.lineTo(p[0]+R*.9, p[1]); xc.moveTo(p[0], p[1]-R*.9); xc.lineTo(p[0], p[1]+R*.9); xc.stroke(); }
+    });
+  }
+  const conActive = ()=> conGlow > 0;
+  function drawConLayer(now){
+    xc.clearRect(0,0,W,H); if(!conActive()) return;
+    const t = themeT, col = Math.round(238 + (22-238)*t)+','+Math.round(241 + (35-241)*t)+','+Math.round(246 + (43-246)*t);
+    drawCon(now, col, t);
+  }
+  /* repaint once when the loop is not running (paused motion, reduced motion, setting changed). deferred: themeT is declared further down */
+  let dn = 0; function drawNow(){ clearTimeout(dn); dn = setTimeout(()=>{ if(!raf && W){ const n = performance.now(); if(on) draw(n); drawConLayer(n); } kick(); }, 0); }
   let on = true, W = 0, H = 0, comet = null, nextComet = 0, raf = 0, last = 0;
-  try{ on = localStorage.getItem('ro-galaxy') !== 'off'; }catch(e){}
+  on = START_DEFAULTS.galaxy > 0;
   function size(){
     const dpr = Math.min(devicePixelRatio || 1, isLite() ? 1 : 1.5); W = innerWidth; H = innerHeight;
-    [cs, cf].forEach(c=>{ c.width = Math.round(W*dpr); c.height = Math.round(H*dpr); });
-    xs.setTransform(dpr,0,0,dpr,0,0); xf.setTransform(dpr,0,0,dpr,0,0); drawStatic();
+    [cs, cf, cc].forEach(c=>{ c.width = Math.round(W*dpr); c.height = Math.round(H*dpr); });
+    xs.setTransform(dpr,0,0,dpr,0,0); xf.setTransform(dpr,0,0,dpr,0,0); xc.setTransform(dpr,0,0,dpr,0,0); drawStatic(); drawNow();
   }
   function drawStatic(){
     xs.clearRect(0,0,W,H); xs.fillStyle = '#fff'; const n = isLite() ? 220 : 460;
@@ -1737,19 +1865,36 @@ document.getElementById('toggleMotion').addEventListener('click', ()=> setMotion
     }
   }
   /* animate only while the galaxy is on, visible (home, tab in front) and motion is not paused; 30 fps (20 on weak devices) */
-  const shouldRun = ()=> on && !reduceMotion && !document.hidden && !stage.classList.contains('hidden') && !motionPaused;
-  function loop(now){ raf = 0; if(!shouldRun()) return; if(now - last >= (isLite() ? 50 : 33)){ last = now; draw(now); } raf = requestAnimationFrame(loop); }
+  const shouldRun = ()=> (on || conActive()) && !reduceMotion && !document.hidden && !stage.classList.contains('hidden') && !motionPaused;
+  function loop(now){ raf = 0; if(!shouldRun()) return; if(now - last >= (isLite() ? 50 : 33)){ last = now; if(on) draw(now); drawConLayer(now); } raf = requestAnimationFrame(loop); }
   function kick(){ if(!raf && shouldRun()) raf = requestAnimationFrame(loop); }
   setInterval(kick, 800); document.addEventListener('visibilitychange', kick);
   let rt = 0; addEventListener('resize', ()=>{ clearTimeout(rt); rt = setTimeout(size, 150); });
-  function applyGal(v, save){
-    on = !!v; gal.hidden = !on; root.style.setProperty('--gl', v);
-    galToggle.setAttribute('aria-checked', v ? 'true' : 'false');
-    if(!on) xf.clearRect(0,0,W,H); else setTimeout(kick, 0);   // deferred: motionPaused / stage are declared further down the script
-    if(save){ try{ localStorage.setItem('ro-galaxy', v ? 'on' : 'off'); }catch(e){} }
+  function fa1(n){ return String(n).replace(/\d/g, d=>'۰۱۲۳۴۵۶۷۸۹'[d]); }   // own digit conversion: faNum is declared further down
+  const galRange = document.getElementById('galRange'), galVal = document.getElementById('galVal');
+  function setGalaxy(pct){
+    pct = Math.min(100, Math.max(0, pct)); on = pct > 0; gal.hidden = !on;
+    root.style.setProperty('--gal', (pct/100).toFixed(2));
+    galVal.textContent = pct === 0 ? 'خاموش' : fa1(pct) + '٪'; galRange.value = pct; galRange.style.setProperty('--fill-pct', pct + '%');
+    if(!on) xf.clearRect(0,0,W,H); else setTimeout(kick, 0);
   }
-  size(); applyGal(on ? 1 : 0, false);
-  bindSwitch(galToggle, '--gl', ()=>on ? 1 : 0, applyGal);
+  /* constellation settings: picker + own glow slider (saved: ro-const, ro-conglow) */
+  const conBtns = [...document.querySelectorAll('#conSel button')], conRange = document.getElementById('conRange'), conVal = document.getElementById('conVal'), conBox = document.getElementById('conGlowBox');
+  function setCon(k, save){
+    if(!CONS[k]) k = 'orion'; conKey = k;
+    conBtns.forEach(x=>x.setAttribute('aria-checked', x.dataset.k === k ? 'true' : 'false'));
+    if(save){ try{ localStorage.setItem('ro-const', k); }catch(e){} }
+    drawNow();
+  }
+  function setConGlow(v){
+    v = Math.min(100, Math.max(0, v)); conGlow = v;
+    conVal.textContent = v === 0 ? 'خاموش' : fa1(v) + '٪'; conRange.value = v; conRange.style.setProperty('--fill-pct', v + '%');
+    drawNow(); setTimeout(kick, 0);
+  }
+  conBtns.forEach(x=>x.addEventListener('click', ()=>{ setCon(x.dataset.k, true); if(conGlow === 0) setConGlow(70); }));
+  conRange.addEventListener('input', ()=>setConGlow(+conRange.value));
+  setConGlow(conGlow); setCon(conKey, false);
+  size(); setGalaxy(START_DEFAULTS.galaxy); galRange.addEventListener('input', ()=>setGalaxy(+galRange.value));
 }
 
 /* very light tick when touching planets and buttons (controlled by the same on/off switch) */
@@ -1778,23 +1923,22 @@ function skillsHTML(){
   const row = ([n,l,ev]) => `<div class="sk-row"><span class="sk-name">${n}${ev?`<small class="sk-ev">${ev}</small>`:''}</span><span class="sk-lvl">${l>=4?'حرفه‌ای':'پیشرفته'}</span></div>`;
   return `<div class="sk-list">${anyDesc?`<p class="card-sub" style="margin:0 4px 12px;">زیر هر مهارت، نمونه‌ای از تجربه‌ی مرتبط نوشته شده است؛ مهارت‌های قوی‌تر در هر دسته بالاتر آمده‌اند.</p>`:''}${KEYWORDS.length?`<div class="card"><h3>🔑 کلیدواژه‌های تخصصی</h3><div class="in-chips">${KEYWORDS.map(k=>`<span>${k}</span>`).join('')}</div></div>`:''}${groups.map(g=>`<div class="card"><h3>${g[0]?g[0]+' ':''}${g[1]}</h3>${g[2].map(row).join('')}</div>`).join('')}</div>`;
 }
-
 const JOBS = ACTIVE_DATA.jobs;
 function jobsMenuHTML(){
   return `<div class="ci-wrap">
     <p class="iss-caption">${faNum(JOBS.length)} سابقه کاری</p>
-    <div class="iss-list">${JOBS.map(j=>`<button type="button" class="iss-card job-card" data-job="${j.key}" style="--tint:${j.tint}"><span class="iss-ico">${j.icon}</span><span class="iss-main"><span class="iss-name">${j.title}</span>${j.org?`<br><span class="iss-sub">${j.org}</span>`:''}${j.date?`<br><span class="job-date">📅 ${j.date}</span>`:''}</span><span class="iss-go" aria-hidden="true">‹</span></button>`).join('')}</div>
+    <div class="iss-list">${JOBS.map(j=>`<button type="button" class="iss-card job-card" data-job="${j.key}" style="--tint:${j.tint}"><span class="iss-ico">${j.icon}</span><span class="iss-main"><span class="iss-name">${j.title}</span><br><span class="iss-sub">${j.org}</span><br><span class="job-date">📅 ${j.date}</span></span><span class="iss-go" aria-hidden="true">‹</span></button>`).join('')}</div>
   </div>`;
 }
 function openJob(key){
   const j = JOBS.find(x=>x.key===key);
-  surfaceTitle.textContent = 'سوابق شغلی ← ' + (j.org||j.title).split('،')[0].split(' (')[0];
+  surfaceTitle.textContent = 'سوابق شغلی ← ' + j.org.split('،')[0].split(' (')[0];
   viewLevel = 'job';
   surfaceBody.innerHTML = `<div class="ci-wrap" style="--tint:${j.tint}">
     <div class="card ci-head"><span class="iss-ico">${j.icon}</span><div>
       <div class="iss-name">${j.title}</div>
-      ${j.org?`<div class="iss-sub">${j.org}</div>`:''}
-      ${j.date?`<span class="job-date">📅 ${j.date}</span>`:''}
+      <div class="iss-sub">${j.org}</div>
+      <span class="job-date">📅 ${j.date}</span>
     </div></div>
     <div class="card jb-card"><ul class="jb-rows">${j.rows.map(r=>`<li${r[3]?' class="win"':''}><span class="jb-ico" aria-hidden="true">${r[0]}</span><span><b>${r[1]}:</b> ${r[2]}</span></li>`).join('')}</ul></div>
   </div>`;
@@ -1802,8 +1946,8 @@ function openJob(key){
 }
 
 /* ---------- processes: how I work, step by step ---------- */
-const CONCEPTS = ACTIVE_DATA.process.concepts;
-const PROCESSES = ACTIVE_DATA.process.areas;
+const CONCEPTS = {"ats": {"title": "ATS", "sub": "سامانه‌ی ردیابی متقاضیان", "paras": ["ATS مخفف Applicant Tracking System، یعنی سامانه‌ی ردیابی متقاضیان، نرم‌افزاری است که سازمان‌ها برای جمع‌آوری و مدیریت رزومه‌ها و پیگیری هر متقاضی در طول فرآیند جذب به کار می‌برند. رزومه‌های رسیده را در یک پایگاه داده نگه می‌دارد، اطلاعات آن‌ها (نام، سوابق، مهارت‌ها) را استخراج می‌کند و به مسئول جذب اجازه می‌دهد بر اساس کلیدواژه و معیار جست‌وجو و فیلتر کند. هر متقاضی در یکی از مرحله‌های مشخص قرار دارد (دریافت رزومه، بررسی اولیه، مصاحبه، پیشنهاد کاری، رد یا استخدام) و سامانه سابقه‌ی پیام‌ها، زمان مصاحبه‌ها و یادداشت‌های ارزیابی را ثبت می‌کند.", "این سامانه خودش تصمیم نمی‌گیرد؛ کارش نظم دادن و سریع‌تر کردن بررسی است. اما چون رزومه اول با آن خوانده و دسته‌بندی می‌شود، شکل رزومه اهمیت پیدا می‌کند: ساختار ساده و تک‌ستونه، عنوان‌های استاندارد (سوابق، مهارت‌ها، تحصیلات)، متن واقعی قابل انتخاب به‌جای تصویر و جدول، و کلیدواژه‌هایی که با شرح شغل آگهی هم‌خوان باشد. برای همین، کنار این نسخه‌ی تعاملی یک نسخه‌ی متنی ساده هم برای ارسال به‌عنوان رزومه در نظر گرفته شده است."]}, "headhunting": {"title": "Head Hunting", "sub": "جذب فعال و هدفمند", "paras": ["هدهانتینگ (شکار استعداد) روشی فعال در جذب است که در آن سازمان یا یک شرکت تخصصی، به‌جای انتظار برای رسیدن رزومه به آگهی، خودش سراغ فرد مناسب می‌رود؛ معمولاً کسی که شاغل است و دنبال کار نمی‌گردد (متقاضی منفعل). بیشتر برای نقش‌های ارشد، تخصصی یا کم‌یاب به کار می‌رود که با آگهی عمومی به‌سختی پر می‌شوند.", "روند کار معمولاً این است: تعریف دقیق مشخصات فرد مطلوب، شناسایی شرکت‌ها و افراد هدف، تماس محرمانه و محترمانه (از راه شبکه‌ی حرفه‌ای، معرفی یا بسترهایی مثل لینکدین)، ارزیابی تناسب و در پایان مذاکره‌ی پیشنهاد. هزینه و زمان بیشتری از آگهی دارد و رعایت محرمانگی و تعهدات قراردادی فرد در شرکت فعلی‌اش (مانند تعهد عدم جذب) بخشی از حرفه‌ای‌گری آن است. در عوض، راه رسیدن به کسانی را باز می‌کند که هیچ‌وقت به آگهی پاسخ نمی‌دهند."]}, "recruiting": {"title": "Recruiting", "sub": "جذب و تأمین متقاضیان", "paras": ["Recruiting یعنی فرایند جذب و تأمین متقاضی برای یک فرصت شغلی؛ از لحظه‌ای که نیاز به نیرو مشخص می‌شود تا وقتی که فهرستی از متقاضیانِ بررسی‌شده برای ارزیابی آماده است. کار آن این است که تعداد کافی از افراد واجد شرایط را به مرحله ارزیابی برساند؛ تصمیم نهایی با این مرحله نیست.", "در محیط صنعتی این مرحله معمولاً با محدودیت‌هایی روبه‌رو است: نقش‌های فنی و شیفتی، محل کار دور از شهر، شرایط احراز مشخص (مثل سابقه کار مرتبط یا گواهی‌های ایمنی) و زمان‌بندی فشرده پروژه. برای همین کیفیت شرح شغل و انتخاب درست کانال‌های جذب، تعیین‌کننده است."]}, "selection": {"title": "Selection", "sub": "ارزیابی و انتخاب گزینه مناسب", "paras": ["Selection مرحله‌ای است که از میان متقاضیانِ جذب‌شده، مناسب‌ترین گزینه ارزیابی و انتخاب می‌شود. ابزارهای معمول آن بررسی رزومه، مصاحبه، آزمون یا نمونه‌کار و بررسی سوابق و معرف‌هاست. اصل مهم این است که همه متقاضیان با معیارهای یکسان و از پیش تعیین‌شده سنجیده شوند.", "تفاوتش با Recruiting در هدف است: Recruiting کیفیت و تعداد ورودی را تأمین می‌کند و Selection از میان آن‌ها تصمیم می‌گیرد. تصمیم نهایی معمولاً مشترک است؛ مسئول جذب ارزیابی را مستند می‌کند و مدیر واحد و مدیریت منابع انسانی در چارچوب اختیاراتشان تصمیم می‌گیرند."]}, "sourcing": {"title": "Sourcing", "sub": "کانال‌ها و روش‌های یافتن متقاضی", "paras": ["Sourcing یعنی شناسایی و پیدا کردن متقاضی بالقوه از کانال‌های مختلف. کانال‌های رایج شامل آگهی در سایت‌های کاریابی، بانک رزومه‌ی سازمان یا پلتفرم‌ها، شبکه‌های حرفه‌ای مثل لینکدین، معرفی نیرو توسط کارکنان و آشنایان کاری، دانشگاه‌ها و مراکز فنی‌وحرفه‌ای و رزومه‌های قبلی سازمان است.", "انتخاب کانال به نوع نقش بستگی دارد. برای نقش‌های عملیاتی و کارگاهی معمولاً کانال‌های محلی و معرفی نیرو کاراترند و برای نقش‌های تخصصی‌تر، جست‌وجو در شبکه‌های حرفه‌ای و بانک رزومه. ثبت منبع هر متقاضی هم کمک می‌کند بعداً معلوم شود کدام کانال برای کدام نقش بهتر جواب داده است."]}, "cbi": {"title": "مصاحبه شایستگی‌محور", "sub": "Competency-Based Interview و الگوی STAR", "paras": ["در مصاحبه شایستگی‌محور، به‌جای سؤال‌های کلی یا فرضی، از متقاضی خواسته می‌شود نمونه‌های واقعی از گذشته‌ی کاری‌اش را تعریف کند؛ چون رفتار گذشته معمولاً بهترین نشانه‌ی رفتار آینده است. شایستگی‌های موردنیاز نقش (مثل کار تیمی، مسئولیت‌پذیری، رعایت ایمنی یا حل مسأله) از قبل مشخص می‌شود و برای هرکدام یک یا چند سؤال رفتاری آماده می‌شود، مثل «موقعیتی را تعریف کنید که ...».", "الگوی STAR برای ساختار دادن به پاسخ‌هاست: Situation (موقعیت)، Task (وظیفه‌ای که بر عهده بود)، Action (اقدامی که خود فرد انجام داد) و Result (نتیجه). مصاحبه‌گر با این چهار بخش بررسی می‌کند پاسخ چقدر مشخص و قابل راستی‌آزمایی است و سهم واقعی خود فرد کجاست. استفاده از یک برگه‌ی ارزیابی ثابت برای همه‌ی متقاضیان، مقایسه را منصفانه‌تر می‌کند."]}, "onboarding": {"title": "Onboarding", "sub": "ورود و استقرار نیروی جدید", "paras": ["Onboarding مجموعه‌ی اقداماتی است که از پذیرش پیشنهاد کار تا استقرار اولیه‌ی نیروی جدید انجام می‌شود: تکمیل مدارک و پرونده، تنظیم قرارداد، معرفی به سرپرست و همکاران، آموزش‌های ورودی (به‌ویژه ایمنی در محیط صنعتی)، تحویل تجهیزات و دسترسی‌ها و روشن کردن انتظارات دوره‌ی اولیه.", "ارتباطش با جذب این است که تجربه‌ی نیروی جدید از همان گفت‌وگوهای اولیه شروع می‌شود؛ شفاف بودن شرایط کار در مرحله‌ی پیشنهاد، ورود را روان‌تر می‌کند. بخشی از این کار، مثل تشکیل پرونده و قرارداد، به امور پرسنلی می‌رسد و بخشی مثل آموزش و معرفی، به واحد مربوط."]}, "socialization": {"title": "جامعه‌پذیری سازمانی", "sub": "آشنایی تدریجی با فرهنگ و روابط کاری", "paras": ["جامعه‌پذیری سازمانی فرایندی تدریجی است که در آن فرد جدید با فرهنگ، هنجارها، شیوه‌ی ارتباط و روابط کاری سازمان آشنا می‌شود و جای خود را در آن پیدا می‌کند. این کار فقط با یک جلسه‌ی معارفه یا دفترچه‌ی قوانین انجام نمی‌شود؛ بیشتر از طریق تعامل روزمره، تجربه‌ی همکاران و دیدن اینکه کارها واقعاً چگونه انجام می‌شود شکل می‌گیرد.", "در عمل، معرفی یک همکار راهنما، توضیح صریح انتظارات و مسیر گزارش‌دهی و فرصت پرسیدن در هفته‌های اول به این فرایند کمک می‌کند و می‌تواند روی ماندگاری و عملکرد نیروی جدید اثر بگذارد."]}, "application": {"title": "فرم درخواست استخدام", "sub": "Application Form", "paras": ["فرم درخواست استخدام (Application Form) برگه‌ی استانداردی است که متقاضی پیش از مصاحبه آن را پر می‌کند و اطلاعات همه را به یک قالب یکسان درمی‌آورد: مشخصات و راه ارتباطی، تحصیلات، سوابق شغلی (سازمان، سمت، مدت، دلیل ترک کار)، مهارت‌ها و گواهی‌ها، انتظار حقوق، آمادگی برای شروع، وضعیت نظام وظیفه (اگر شغل لازم دارد) و معرف. چون همه‌ی فرم‌ها هم‌شکل‌اند، مقایسه‌ی متقاضیان ساده‌تر از مقایسه‌ی رزومه‌هایی است که هرکدام شکل خودشان را دارند.", "ارزش اصلی فرم پیش از مصاحبه است. از روی آن می‌شود فاصله‌های زمانی در سابقه، دلیل جابه‌جایی‌ها، تناسب انتظار حقوق و شرایط شغل (شیفت، محل کار، زمان شروع) و تناسب مدارک با شرایط احراز را همان‌جا فهمید و سؤال‌های مشخص آماده کرد. رزومه فقط چیزی را نشان می‌دهد که متقاضی انتخاب کرده بنویسد؛ فرم همان سؤال‌ها را از همه می‌پرسد. دو احتیاط لازم است: فقط اطلاعاتی بپرسید که به شغل ربط دارد و از اطلاعات شخصی متقاضی مراقبت کنید؛ و بعد از انتخاب، اطلاعات فرم را با مدارک و سوابق تطبیق دهید."]}, "traininganddev": {"title": "آموزش و توسعه (T&D)", "sub": "Training & Development", "paras": ["آموزش یعنی انتقال دانش و مهارت لازم برای انجام بهتر کار فعلی؛ توسعه یعنی آماده کردن فرد برای نقش‌ها و مسئولیت‌های آینده. واحد منابع انسانی هر دو را با هم دنبال می‌کند: کارمند تازه‌وارد باید کارش را درست یاد بگیرد و کارمند باتجربه باید برای رشد یا جانشینی آماده شود.", "در سازمان‌های صنعتی بخش بزرگی از آموزش به مهارت‌های فنی و ایمنی برمی‌گردد و بخشی به مهارت‌های رفتاری مثل کار تیمی و ارتباط. نکته‌ی مهم این است که آموزش فقط وقتی ارزش دارد که به یک نیاز واقعی کاری وصل باشد؛ آموزش بدون نیاز، فقط هزینه و زمان است."]}, "tna": {"title": "نیازسنجی آموزشی", "sub": "Training Needs Analysis", "paras": ["نیازسنجی آموزشی یعنی پیدا کردن فاصله‌ی «آنچه افراد الان می‌توانند» با «آنچه کار از آن‌ها انتظار دارد». این فاصله را در سه سطح می‌شود دید: سازمان (راهبرد، تغییر فناوری یا قانون جدید)، شغل (مهارت‌های لازم هر شغل) و فرد (عملکرد و ضعف‌های مشخص هر نفر).", "منبع‌های رایج داده: ارزیابی عملکرد، درخواست مدیران، حوادث و خطاهای تکرارشونده، نیازهای قانونی و ایمنی، و گفت‌وگو با خود کارکنان. هر نیاز را باید از خود «آموزش» جدا کرد: گاهی مشکل عملکرد با آموزش حل نمی‌شود و علت آن ابزار، روش کار یا انگیزه است."]}, "objectives": {"title": "هدف یادگیری", "sub": "Learning Objective", "paras": ["هدف یادگیری جمله‌ای است که می‌گوید شرکت‌کننده بعد از دوره چه کاری را می‌تواند انجام دهد، نه اینکه مدرس چه مطالبی را تدریس می‌کند. مثلاً «بتواند فرم گزارش حادثه را کامل پر کند» هدف خوبی است، اما «آشنایی با ایمنی» بیش از حد کلی است.", "هدف روشن چند فایده دارد: محتوای دوره را به آنچه لازم است محدود می‌کند، روش مناسب آموزش را مشخص می‌کند، و مهم‌تر از همه ارزیابی اثربخشی را ممکن می‌کند؛ چون می‌شود سنجید همان کار انجام می‌شود یا نه."]}, "methods": {"title": "روش‌های آموزش", "sub": "Training Methods", "paras": ["روش آموزش باید با نوع نیاز هماهنگ باشد. کلاس و کارگاه برای مفاهیم و بحث گروهی مناسب‌اند؛ آموزش حین کار (On-the-Job Training) برای مهارت‌های عملی که باید کنار تجهیزات یا فرایند واقعی یاد گرفته شوند؛ و آموزش الکترونیکی برای محتوای ثابت و افراد پراکنده یا شیفتی.", "در عمل ترکیب چند روش معمولاً بهتر جواب می‌دهد، مثل یک کلاس کوتاه به‌علاوه‌ی تمرین عملی کنار همکار باتجربه. معیار انتخاب سه چیز است: هدف یادگیری، تعداد و پراکندگی افراد، و ریسک اشتباه (هرچه خطا خطرناک‌تر، تمرین عملی و نظارت مهم‌تر)."]}, "plan": {"title": "برنامه‌ی آموزشی سالانه", "sub": "Annual Training Plan", "paras": ["برنامه‌ی آموزشی سالانه فهرستی از دوره‌هاست که بر پایه‌ی نیازسنجی تعیین می‌شود و برای هرکدام موضوع، مخاطب، روش، مدرس یا مجری، زمان و بودجه مشخص است. این برنامه به مدیریت کمک می‌کند آموزش‌ها را اولویت‌بندی و بودجه را تقسیم کند.", "برنامه‌ی خوب انعطاف هم دارد: اگر وسط سال نیاز فوری پیش آمد (قانون یا تجهیز جدید) باید بتوان دوره‌ای را جابه‌جا یا اضافه کرد. فشار تولید هم در زمان‌بندی مهم است؛ دوره‌ای که با اوج کار تداخل دارد معمولاً نیمه‌کاره می‌ماند."]}, "mandatory": {"title": "آموزش‌های الزامی", "sub": "Compulsory / Compliance Training", "paras": ["بعضی آموزش‌ها اختیاری نیستند و به الزام قانونی، استاندارد یا سیاست سازمان برمی‌گردند؛ در محیط صنعتی مهم‌ترین نمونه، آموزش ایمنی و بهداشت کار است. برای این آموزش‌ها، علاوه بر برگزاری، مستندسازی (حضور، محتوا، تاریخ، گواهی) اهمیت زیادی دارد.", "چون گواهی‌ها گاهی تاریخ اعتبار دارند، باید برای هر فرد مشخص باشد چه آموزشی گرفته و چه زمانی تمدید یا تکرار لازم است. این پیگیری معمولاً با واحد ایمنی (HSE) هماهنگ می‌شود."]}, "kirkpatrick": {"title": "ارزیابی اثربخشی آموزش", "sub": "مدل چهارسطحی کرک‌پاتریک", "paras": ["ارزیابی اثربخشی یعنی بفهمیم آموزش واقعاً اثر داشته یا نه. مدل رایج آن، مدل چهارسطحی کرک‌پاتریک است: ۱) واکنش (شرکت‌کننده از دوره چه برداشتی داشت)، ۲) یادگیری (چه چیزی یاد گرفت؛ مثلاً با آزمون پیش و پس)، ۳) رفتار (آیا در کار تغییر کرد)، ۴) نتیجه (آیا شاخصی مثل خطا، حادثه یا زمان کار بهتر شد).", "هرچه سطح بالاتر می‌رود، سنجش سخت‌تر ولی ارزشمندتر است. معمولاً سطح یک و دو بلافاصله بعد از دوره سنجیده می‌شود و سطح سه و چهار با فاصله و با کمک سرپرست مستقیم. چون نتیجه ممکن است علت‌های دیگری هم داشته باشد، نسبت دادن آن به آموزش باید با احتیاط باشد."]}, "metrics": {"title": "شاخص‌های آموزش", "sub": "Training Metrics", "paras": ["چند شاخص ساده کمک می‌کنند وضعیت آموزش دیده شود: ساعت آموزش به ازای هر نفر، درصد کارکنانی که آموزش‌های الزامی را کامل کرده‌اند، درصد اجرای برنامه‌ی سالانه، و هزینه‌ی آموزش به ازای هر نفر. این‌ها می‌گویند «چقدر آموزش داده‌ایم»، نه «چقدر مؤثر بوده».", "برای اثربخشی باید شاخص‌های کار را هم کنار آن دید، مثل کاهش خطا یا گزارش‌های ایمنی. هیچ عددی به‌تنهایی کافی نیست؛ مثلاً ساعت آموزش زیاد با دوره‌هایی که به کار ربط ندارند، نشانه‌ی خوبی نیست."]}};
+const PROCESSES = [{"key": "hiring", "icon": "🔄", "title": "جذب و استخدام", "sub": "از نیازسنجی تا ورود به سازمان", "concepts": ["recruiting", "selection", "sourcing", "headhunting", "ats", "application", "cbi", "onboarding", "socialization"], "steps": [{"title": "نیازسنجی و شرح شغل", "short": "پیش از هر آگهی روشن می‌شود دقیقاً چه کسی و با چه شرایطی لازم است.", "points": ["شناسایی نیاز استخدامی و هماهنگی با واحد درخواست‌کننده", "تعیین عنوان شغلی، تعداد نیروی موردنیاز و شرایط احراز", "تدوین یا بررسی شرح وظایف و شایستگی‌های موردنیاز", "تعیین معیارهای ارزیابی و اولویت‌های غربالگری"], "exp": "", "concepts": ["recruiting"]}, {"title": "تأمین و غربالگری متقاضیان", "short": "متقاضیان از چند کانال پیدا می‌شوند و با معیارهای مشخص برای مصاحبه فیلتر می‌شوند.", "points": ["تأمین متقاضی از آگهی‌های استخدامی، بانک رزومه، شبکه ارتباطی و معرفی نیرو", "بررسی رزومه‌ها و تطبیق آن‌ها با شرایط احراز؛ معیارها از قبل به «ضروری» و «مطلوب» تقسیم می‌شوند", "ارسال فرم درخواست استخدام برای تکمیل؛ اطلاعات مهم (سابقه، انتظار حقوق، زمان شروع، شیفت) پیش از مصاحبه روشن می‌شود", "غربالگری اولیه با معیارها و فیلترهای مشخص و مقایسه‌ی متقاضیان در یک جدول ساده", "ثبت، دسته‌بندی و پیگیری وضعیت هر متقاضی؛ در سازمان‌هایی که ATS دارند، در همان سامانه"], "exp": "", "concepts": ["sourcing", "headhunting", "ats", "application"]}, {"title": "مصاحبه و ارزیابی", "short": "مصاحبه بر پایه شایستگی‌های شغل و شواهد رفتاری انجام و مستند می‌شود.", "points": ["برنامه‌ریزی و هماهنگی مصاحبه‌ها", "مرور فرم تکمیل‌شده پیش از مصاحبه و آماده کردن سؤال‌های مشخص: فاصله‌های سابقه، دلیل ترک کار قبلی، انتظار حقوق، آمادگی شروع", "مصاحبه شایستگی‌محور با نمونه‌های واقعی گذشته و الگوی STAR برای ساختاربندی پاسخ‌ها", "امتیازدهی هر شایستگی با یک فرم ثابت برای همه‌ی متقاضیان، همراه با ثبت شواهد و مستندسازی بازخورد", "پرهیز از خطاهای رایج: اثر هاله (یک ویژگی خوب همه‌چیز را خوب نشان دهد)، شباهت به مصاحبه‌گر و تصمیم بر پایه اولین برداشت"], "exp": "", "concepts": ["cbi", "selection", "application"]}, {"title": "انتخاب و ورود به سازمان", "short": "نتیجه ارزیابی جمع‌بندی، پیشنهاد کاری اعلام و ورود نیروی جدید هماهنگ می‌شود.", "points": ["جمع‌بندی نتایج ارزیابی و هماهنگی تصمیم نهایی", "اعلام نتیجه و ارائه پیشنهاد همکاری در چارچوب اختیارات سازمان", "شفاف‌سازی انتظارات درباره حقوق، مزایا، قرارداد، شیفت و شرایط کار", "پیگیری پذیرش پیشنهاد و هماهنگی اقدامات پیش از ورود", "تطبیق اطلاعات فرم با مدارک و سوابق (مدرک تحصیلی، سوابق بیمه، گواهی‌ها) پیش از ورود", "ورود پایان استخدام نیست؛ آغاز Onboarding و جامعه‌پذیری سازمانی است"], "exp": "", "concepts": ["onboarding", "socialization"]}]}, {"key": "training", "icon": "🎓", "title": "آموزش منابع انسانی", "sub": "از نیازسنجی تا ارزیابی اثربخشی", "concepts": ["traininganddev", "tna", "objectives", "methods", "plan", "mandatory", "kirkpatrick", "metrics", "onboarding"], "steps": [{"title": "نیازسنجی آموزشی", "short": "پیش از هر دوره روشن می‌شود کدام فاصله‌ی مهارتی واقعاً با آموزش حل می‌شود.", "points": ["بررسی نیاز در سه سطح: سازمان، شغل و فرد", "جمع‌آوری داده از ارزیابی عملکرد، درخواست مدیران، حوادث و خطاها و نیازهای قانونی و ایمنی", "جدا کردن مشکل‌هایی که با آموزش حل می‌شوند از مشکل‌های ابزار، روش کار یا انگیزه", "اولویت‌بندی نیازها بر پایه‌ی اثر بر کار و ریسک"], "concepts": ["tna", "traininganddev"]}, {"title": "طراحی و برنامه‌ریزی", "short": "برای هر نیاز، هدف، روش، مجری و زمان مشخص و در برنامه‌ی سالانه ثبت می‌شود.", "points": ["نوشتن هدف یادگیری به‌صورت کاری که فرد بعد از دوره بتواند انجام دهد", "انتخاب روش (کلاس، حین کار، الکترونیکی یا ترکیبی) متناسب با هدف و ریسک", "انتخاب مدرس یا مجری و تأمین محتوا", "تدوین برنامه‌ی سالانه با زمان‌بندی و بودجه، هماهنگ با فشار کاری واحدها"], "concepts": ["objectives", "methods", "plan"]}, {"title": "اجرا و مستندسازی", "short": "دوره‌ها هماهنگ و برگزار می‌شوند و حضور و گواهی هر نفر ثبت می‌شود.", "points": ["هماهنگی زمان، مکان، مدرس و شرکت‌کنندگان با مدیران واحدها", "برگزاری دوره و ثبت حضور و غیاب", "ثبت آموزش‌ها در پرونده‌ی هر فرد (موضوع، تاریخ، ساعت، گواهی)", "پیگیری آموزش‌های الزامی و زمان تمدید آن‌ها، همراه با واحد ایمنی", "آموزش ورود نیروی جدید به‌عنوان بخشی از Onboarding"], "exp": "", "concepts": ["mandatory", "onboarding"]}, {"title": "ارزیابی اثربخشی و بهبود", "short": "بررسی می‌شود آموزش اثر داشته یا نه و نتیجه به دوره‌ها و برنامه‌ی بعدی برمی‌گردد.", "points": ["سنجش واکنش و یادگیری بلافاصله بعد از دوره (نظرسنجی، آزمون پیش و پس)", "بررسی تغییر رفتار در کار، چند هفته بعد و با کمک سرپرست مستقیم", "نگاه به شاخص‌های نتیجه (خطا، حادثه، زمان کار) با احتیاط در نسبت دادن علت", "گزارش شاخص‌های آموزش (ساعت سرانه، اجرای برنامه) و اصلاح دوره یا برنامه‌ی سال بعد"], "concepts": ["kirkpatrick", "metrics"]}]}];
 function processesMenuHTML(){
   return `<div class="ci-wrap">
     <p class="iss-caption">فرآیندهای کاری من، گام‌به‌گام</p>
@@ -1819,24 +1963,22 @@ function stepBodyHTML(st){
   if(st.skills && st.skills.length) parts.push(`<div class="pr-sec"><h4>مهارت‌ها</h4><div class="in-chips">${chips(st.skills)}</div></div>`);
   if(st.tools && st.tools.length)  parts.push(`<div class="pr-sec"><h4>ابزار و نرم‌افزار</h4><div class="in-chips">${chips(st.tools)}</div></div>`);
   if(st.exp) parts.push(`<div class="pr-sec"><h4>در سوابق من</h4><p class="pr-exp">${st.exp}</p></div>`);
-  const sc = (st.concepts||[]).filter(k=>CONCEPTS[k]);
-  if(sc.length) parts.push(`<div class="pr-sec"><h4>مفاهیم مرتبط (آشنایی مفهومی)</h4><div class="pr-rel">${sc.map(k=>`<button type="button" data-concept="${k}">${CONCEPTS[k].title}</button>`).join('')}</div></div>`);
-  return parts.length ? parts.join('') : '<p class="pr-soon">شرح روش کار و مهارت‌های این مرحله به‌زودی اضافه می‌شود.</p>';
+  if(st.concepts && st.concepts.length) parts.push(`<div class="pr-sec"><h4>مفاهیم مرتبط (آشنایی مفهومی)</h4><div class="pr-rel">${st.concepts.map(k=>`<button type="button" data-concept="${k}">${CONCEPTS[k].title}</button>`).join('')}</div></div>`);
+  return parts.length ? parts.join('') : '';
 }
 function openProcess(key){
   const pr = PROCESSES.find(x=>x.key===key);
   surfaceTitle.textContent = 'فرآیندها ← ' + pr.title;
   viewLevel = 'process';
-  const cons = (pr.concepts||[]).filter(k=>CONCEPTS[k]).map(k=>Object.assign({key:k}, CONCEPTS[k]));
+  const cons = pr.concepts.map(k=>Object.assign({key:k}, CONCEPTS[k]));
   surfaceBody.innerHTML = `<div class="ci-wrap">
     <button type="button" class="iss-card pr-concepts-btn" id="prConceptsBtn" aria-expanded="false" aria-controls="prConcepts"><span class="iss-ico">💡</span><span class="iss-main"><span class="iss-name">مفاهیم</span><br><span class="iss-sub">${cons.slice(0,3).map(c=>c.title).join('، ')} و …</span></span><span class="iss-go" aria-hidden="true">‹</span></button>
     <div class="pr-concepts" id="prConcepts" hidden>${cons.map(c=>`<details class="card pr-concept" id="pc-${c.key}"><summary><span class="pr-head"><b>${c.title}</b><small>${c.sub}</small></span></summary><div class="pr-concept-body">${c.paras.map(t=>`<p>${t}</p>`).join('')}</div></details>`).join('')}</div>
-    <p class="pr-note">این صفحه دانش فرایندی و آشنایی مفهومی من را نشان می‌دهد؛ تجربه اجرایی‌ام در بخش سوابق شغلی آمده است.</p>
-    <div class="in-h">مراحل فرآیند ${pr.title}</div>${pr.steps.length?'':'<p class="pr-soon">هنوز مرحله‌ای برای این فرآیند نوشته نشده است.</p>'}
+    <p class="pr-note">اینجا آنچه از فرایندها می‌دانم را نوشته‌ام؛ تجربه‌ی کاری‌ام در سوابق شغلی است.</p>
+    <div class="in-h">مراحل فرآیند ${pr.title}</div>
     <ol class="pr-flow">${pr.steps.map((st,i)=>`<li class="pr-step"><span class="pr-num" aria-hidden="true">${faNum(i+1)}</span><details class="card pr-card"><summary><span class="pr-head"><b>${st.title}</b>${st.short?`<span class="pr-short">${st.short}</span>`:''}<span class="pr-more"><span class="m-open">مشاهده جزئیات</span><span class="m-close">بستن جزئیات</span></span></span></summary><div class="pr-body">${stepBodyHTML(st)}</div></details></li>`).join('')}</ol>
   </div>`;
   const btn = document.getElementById('prConceptsBtn'), box = document.getElementById('prConcepts');
-  if(!cons.length){ btn.style.display = 'none'; box.remove(); }
   btn.addEventListener('click', ()=>{ const o = box.hidden; box.hidden = !o; btn.setAttribute('aria-expanded', o ? 'true' : 'false'); });
   surfaceBody.querySelectorAll('.pr-rel button').forEach(b=>b.addEventListener('click', ()=>{
     box.hidden = false; btn.setAttribute('aria-expanded','true');
@@ -1863,13 +2005,13 @@ function canEdit(){
 function sectionEmpty(k){
   const d = ACTIVE_DATA, P = VAR;
   switch(k){
-    case 'intro':     return !(P.summary || P.chips.length || d.personal.tagline || d.stats.length || d.timeline.length || d.research.length || d.personal.militaryStatus);
+    case 'intro':     return !(P.summary || P.intro || P.chips.length || d.personal.tagline || d.stats.length || d.timeline.length || d.research.length || d.personal.militaryStatus);
     case 'skills':    return !(d.skills.length || P.kw.length);
     case 'jobs':      return !d.jobs.length;
     case 'certs':     return !d.certificates.items.length;
     case 'self':      { const s=d.selfKnowledge; return !(s.oneLiner || s.aptitude.rows.length || s.holland.items.length || s.holland.code || s.disclaimer); }
     case 'contact':   return !d.contact.length;
-    case 'processes': return !d.process.areas.length;
+    case 'processes': return false;
   }
   return false;
 }
@@ -1880,8 +2022,7 @@ const EMPTY_HINT = {
   jobs:'سوابق شغلی اینجا نمایش داده می‌شود.',
   certs:'گواهی‌ها (همراه با تصویر) اینجا نمایش داده می‌شود.',
   self:'نتیجه‌ی آزمون‌ها و خودشناسی حرفه‌ای اینجا نمایش داده می‌شود.',
-  contact:'راه‌های ارتباطی اینجا نمایش داده می‌شود.',
-  processes:'فرآیندهای کاری اینجا نمایش داده می‌شود.'
+  contact:'راه‌های ارتباطی اینجا نمایش داده می‌شود.'
 };
 function emptyHTML(key){
   const ed = canEdit();
@@ -1894,7 +2035,7 @@ function bindEmpty(){
 /* ---------- intro / contact / self ---------- */
 function introHTML(){
   if(sectionEmpty('intro')) return emptyHTML('intro');
-  const d = ACTIVE_DATA, p = d.personal, hasHero = p.tagline || VAR.summary || VAR.chips.length;
+  const d = ACTIVE_DATA, p = d.personal, hasHero = p.tagline || VAR.intro || VAR.summary || VAR.chips.length;
   const facts = d.stats.filter(s=>s.value||s.label).map(s=>`<div class="in-fact"><b>${s.value}</b><span>${s.label}</span></div>`).join('')
     + (p.militaryStatus ? `<div class="in-fact"><b>${p.militaryStatus}</b><span>وضعیت نظام وظیفه</span></div>` : '');
   const tl = d.timeline.map(t=>`<div class="in-tl-item">${t.date?`<div class="in-tl-date">${t.date}</div>`:''}${t.title?`<div class="in-tl-title">${t.title}</div>`:''}${t.org?`<div class="in-tl-org">${t.org}</div>`:''}${t.desc?`<div class="in-tl-desc">${t.desc}</div>`:''}</div>`).join('');
@@ -1907,8 +2048,8 @@ function introHTML(){
   return `
     <div class="in-wrap">
       ${hasHero?`<div class="card in-hero">
-        ${p.tagline?`<h2>${p.tagline}</h2>`:''}
-        ${VAR.summary?`<p>${VAR.summary}</p>`:''}
+        <h2>${p.tagline||'کمی درباره‌ی من'}</h2>
+        ${(VAR.intro||VAR.summary)?`<p>${VAR.intro||VAR.summary}</p>`:''}
         ${VAR.chips.length?`<div class="in-chips">${VAR.chips.map(k=>`<span>${k}</span>`).join('')}</div>`:''}
       </div>`:''}
       ${facts?`<div class="card">${facts}</div>`:''}
@@ -1962,6 +2103,7 @@ function printHTML(){
   const cl = [];
   if(p.location) cl.push(`<div><b>آدرس:</b> ${p.location}</div>`);
   const pick = t => d.contact.find(c=>c.type===t && c.value);
+  const PL = x => x.replace(/<div>/g,'<div class="pr-line">');
   const ph = pick('phone'), em = pick('email'), li = pick('linkedin'), wb = pick('website'), tg = pick('telegram');
   if(ph) cl.push(`<div><b>شماره تماس:</b> <bdi dir="ltr">${ph.value}</bdi></div>`);
   if(em) cl.push(`<div><b>ایمیل:</b> <bdi dir="ltr">${em.value}</bdi></div>`);
@@ -1969,7 +2111,7 @@ function printHTML(){
   if(wb) cl.push(`<div><b>وب‌سایت:</b> <bdi dir="ltr">${wb.value}</bdi></div>`);
   if(tg) cl.push(`<div><b>تلگرام:</b> <bdi dir="ltr">${tg.value}</bdi></div>`);
   if(p.militaryStatus) cl.push(`<div><b>وضعیت نظام وظیفه:</b> ${p.militaryStatus}</div>`);
-  if(cl.length) h.push(`<div class="pr-contact">${cl.join('')}</div>`);
+  if(cl.length) h.push(`<div class="pr-contact">${PL(cl.join(''))}</div>`);
   if(V.summary) h.push('<h2>خلاصه حرفه‌ای</h2><p id="printSummary"></p>');
   let groups = SKILLS.filter(g=>g[1]||(g[2]&&g[2].length));
   if(Array.isArray(V.printOrder) && V.printOrder.length){ const o = V.printOrder.map(i=>groups[i]).filter(Boolean); groups.forEach(g=>{ if(o.indexOf(g)<0) o.push(g); }); groups = o; }
@@ -2049,14 +2191,17 @@ function renderShell(){
   const hs = document.getElementById('homeStats');
   if(hs){
     const st = d.stats.filter(s=>s.value && (s.short||s.label)).slice(0,4);
-    hs.innerHTML = st.map(s=>`<span><b>${s.value}</b> ${s.short||s.label}</span>`).join('');
+    hs.innerHTML = st.map(s=>{ const i = d.stats.indexOf(s); return `<button type="button" class="stat" data-k="${i}" aria-haspopup="dialog"><b>${s.value}</b><small>${s.short||s.label}</small></button>`; }).join('');
     hs.style.display = st.length ? '' : 'none';
   }
   [['svPhone','phone'],['svWhatsapp','whatsapp'],['svEmail','email']].forEach(([id,t])=>{
     const a = document.getElementById(id); if(!a) return; const c = contactOf(t);
     if(c){ a.href = c.href; a.hidden = false; } else { a.removeAttribute('href'); a.hidden = true; }
   });
-  const vt = document.getElementById('verTag'); if(vt) vt.textContent = VERSION;
+  const ext = d.contact.filter(c=>(c.type==='website'||c.type==='linkedin') && c.href).slice(0,2);
+  ['svLink1','svLink2'].forEach((id,i)=>{ const a = document.getElementById(id); if(!a) return; const c = ext[i]; if(c){ a.href = c.href; a.textContent = (c.label||'پیوند') + ' ↗'; a.hidden = false; } else { a.removeAttribute('href'); a.hidden = true; } });
+  const F = d.features || {};
+  [['procBtn',F.process],['toolsBtn',F.tools]].forEach(([id,on])=>{ const b = document.getElementById(id); if(b) b.style.display = on===false ? 'none' : ''; });
   buildPrintResume();
 }
 
@@ -2084,8 +2229,13 @@ const CONTENT = {
   processes: {
     title:'فرآیندها',
     halo:'rgba(63,210,198,.18)',
-    html:()=> sectionEmpty('processes') ? emptyHTML('processes') : processesMenuHTML()
+    html: processesMenuHTML
   },
+  tools: { title:'ابزارها', halo:'rgba(110,198,255,.18)', html:`<div class="tl-list">
+      <button type="button" class="card tl-item tl-open" data-tool="tax"><h3>🧮 محاسبه مالیات حقوق</h3><span class="tl-badge ok">آماده</span></button>
+      <div class="card tl-item"><h3>🧮 محاسبه دستمزد</h3><span class="tl-badge">در حال تکمیل</span></div>
+      <button type="button" class="card tl-item tl-open" data-tool="insurance"><h3>🧮 محاسبه حق بیمه تامین اجتماعی</h3><span class="tl-badge ok">آماده</span></button>
+    </div>` },
   self: {
     title:'خودشناسی حرفه‌ای',
     halo:'rgba(139,147,224,.18)',
@@ -2126,17 +2276,19 @@ function shrinkSurface(){
 }
 function showSurface(halo){
   const fromHome = !surface.classList.contains('active') || surface.classList.contains('closing');
+  surfaceBody.classList.remove('fit');
   surfaceBg.style.setProperty('--halo', halo);
   const tm = halo.match(/rgba\((\d+,\s*\d+,\s*\d+)/); if(tm) surface.style.setProperty('--sect', tm[1]);
   stage.classList.add('hidden');
   surface.classList.remove('closing');
   surface.classList.add('active');
-  surfaceBody.scrollTop = 0;
-  { const k=(location.hash.slice(1)||'').split('/')[0], n={intro:1,skills:2,certs:3,jobs:4,processes:5,self:6,contact:7}[k]; document.getElementById('sheetTag').textContent = n ? 'شیت '+faNum(n)+' از ۷' : ''; }
+  surfaceBody.scrollTop = 0; surface.classList.remove('scrolled');
   iconize(surfaceBody);
   startCardProx();
   if(fromHome) growSurface();
 }
+/* long titles fold away when the page is scrolled (hysteresis avoids flicker when the bar changes height) */
+surfaceBody.addEventListener('scroll', ()=>{ const y = surfaceBody.scrollTop; if(y > 40) surface.classList.add('scrolled'); else if(y < 8) surface.classList.remove('scrolled'); }, {passive:true});
 function openSurface(key){
   const data = CONTENT[key];
   surfaceTitle.textContent = data.title;
@@ -2144,8 +2296,113 @@ function openSurface(key){
   surfaceBody.innerHTML = typeof data.html === 'function' ? data.html() : data.html;
   bindEmpty();
   if(key==='jobs') surfaceBody.querySelectorAll('.job-card').forEach(b=>b.addEventListener('click',()=>go('jobs/'+b.dataset.job)));
+  if(key==='tools') surfaceBody.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>go('tools/'+b.dataset.tool)));
   if(key==='processes') surfaceBody.querySelectorAll('.proc-card').forEach(b=>b.addEventListener('click',()=>go('processes/'+b.dataset.proc)));
   showSurface(data.halo);
+}
+/* ---------- tool: social-security premium calculator (all amounts in rials) ---------- */
+const INS_IN = ['حقوق ثابت','مزد سنوات','اضافه‌کاری','شب‌کاری','نوبت‌کاری','تعطیل‌کاری','جمعه‌کاری','حق تاهل','فوق‌العاده شغلی','حق تخصص','حق مسکن','بن کارگری','سختی آب‌وهوا','حق جذب'];
+const INS_EX = ['حق عائله‌مندی (اولاد)','مزایای پایان کار','هزینه سفر','حق ماموریت','عیدی','سنوات','پاداش افزایش تولید','خسارت اخراج','حق شیر','بازخرید ایام مرخصی'];
+const INS_OUT = ['جمع کل دستمزد (مشمول و غیرمشمول)','جمع اقلام مشمول','جمع کل حق بیمه (۳۰٪ از اقلام مشمول)','حق بیمه سهم کارفرما (۲۳٪ از اقلام مشمول)','حق بیمه سهم کارگر (۷٪ از اقلام مشمول)'];
+const FA_D = '۰۱۲۳۴۵۶۷۸۹', AR_D = '٠١٢٣٤٥٦٧٨٩';
+const insFa = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'٬').replace(/\d/g,d=>FA_D[d]);
+const insLatin = v => v.replace(/[۰-۹]/g,d=>FA_D.indexOf(d)).replace(/[٠-٩]/g,d=>AR_D.indexOf(d));
+const insPct = (a,p) => Math.floor((a*p + 50)/100);   // percent of a, rounded to the nearest rial
+function openInsurance(){
+  surfaceTitle.textContent = 'ابزارها ← حق بیمه تامین اجتماعی';
+  viewLevel = 'tool';
+  const rows = (arr,g) => arr.map((t,i)=>`<div class="ins-row"><label for="ins-${g}${i}">${t}</label><input id="ins-${g}${i}" data-g="${g}" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" enterkeyhint="next" dir="ltr" placeholder="۰"></div>`).join('');
+  surfaceBody.innerHTML = `<div class="ins">
+    <div class="ins-top"><p>همه‌ی مبالغ به <b>ریال</b> است. خالی گذاشتن هر ردیف به معنی <b>۰</b> بودن آن مقدار است.</p><button type="button" class="ins-clear" id="insClear">پاک کردن</button></div>
+    <div class="ins-table" id="insTable">
+      <details open><summary><span>اقلام مشمول حق بیمه (${insFa(INS_IN.length)} مورد)</span><span class="ins-sub" id="insSubA">۰</span></summary>${rows(INS_IN,'a')}</details>
+      <details><summary><span>اقلام غیرمشمول (${insFa(INS_EX.length)} مورد)</span><span class="ins-sub" id="insSubB">۰</span></summary>${rows(INS_EX,'b')}</details>
+    </div>
+    <ol class="ins-res" aria-live="polite">${INS_OUT.map((t,i)=>`<li><span class="n">${FA_D[i+1]}</span><span class="k">${t}</span><b class="v" id="insR${i+1}">۰</b><span class="u">ریال</span></li>`).join('')}</ol>
+  </div>`;
+  showSurface('rgba(110,198,255,.18)');
+  surfaceBody.classList.add('fit');
+  const table = surfaceBody.querySelector('#insTable');
+  const inputs = Array.from(table.querySelectorAll('input'));
+  const calc = ()=>{
+    let A = 0, B = 0;
+    inputs.forEach(i=>{ const n = +(i.dataset.v || 0); if(i.dataset.g === 'a') A += n; else B += n; });
+    const total = insPct(A,30), emp = insPct(A,23), wor = total - emp;   // employer + worker always equals the total
+    [A + B, A, total, emp, wor].forEach((n,i)=>{ surfaceBody.querySelector('#insR'+(i+1)).textContent = insFa(n); });
+    surfaceBody.querySelector('#insSubA').textContent = insFa(A);
+    surfaceBody.querySelector('#insSubB').textContent = insFa(B);
+  };
+  const fmt = inp=>{
+    const digitsBefore = insLatin(inp.value.slice(0, inp.selectionStart || 0)).replace(/\D/g,'').length;
+    const raw = insLatin(inp.value).replace(/\D/g,'').replace(/^0+(?=\d)/,'').slice(0,12);
+    inp.dataset.v = raw; inp.value = raw ? insFa(raw) : '';
+    let c = 0, cnt = 0; while(c < inp.value.length && cnt < digitsBefore){ if(FA_D.includes(inp.value[c])) cnt++; c++; }
+    try{ inp.setSelectionRange(c,c); }catch(e){}
+  };
+  table.addEventListener('input', e=>{ if(e.target.tagName === 'INPUT'){ fmt(e.target); calc(); } });
+  table.addEventListener('keydown', e=>{
+    if(e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;
+    e.preventDefault();
+    const next = inputs[inputs.indexOf(e.target) + 1];
+    if(next){ const d = next.closest('details'); if(d) d.open = true; next.focus(); } else e.target.blur();
+  });
+  surfaceBody.querySelector('#insClear').addEventListener('click', ()=>{ inputs.forEach(i=>{ i.value = ''; i.dataset.v = ''; }); calc(); });
+}
+/* ---------- tool: salary income-tax calculator, 1405 (all amounts in rials) ---------- */
+const TX_EXEMPT_IDX = [3,5,2,7];                                  // from INS_EX: حق ماموریت، سنوات، هزینه سفر، خسارت اخراج
+const TX_TAXABLE = [...INS_IN.map(t=>[t,1]), ...INS_EX.filter((t,i)=>!TX_EXEMPT_IDX.includes(i)).map(t=>[t,0]), ['مزایای مستمر',0], ['مزایای غیرمستمر',0]];
+const TX_EXEMPT = TX_EXEMPT_IDX.map(i=>INS_EX[i]);
+const TX_GOODS = ['کالا (مورد ۱)','کالا (مورد ۲)'];
+const TX_TH = [400000000n,800000000n,1000000000n,1200000000n,1400000000n], TX_RT = [0n,10n,15n,20n,25n,30n];   // monthly brackets; annual = x12
+const TX_CAP_A = 800000000n;                                       // goods exempt per year: 2/12 of the 4.8 billion-rial annual exemption
+const txProg = (x,k)=>{ let sum = 0n, lo = 0n; for(let i=0;i<6;i++){ const hi = i<5 ? TX_TH[i]*k : null; const top = (hi===null || x<hi) ? x : hi; if(top>lo) sum += (top-lo)*TX_RT[i]; if(hi===null || x<=hi) break; lo = hi; } return (sum + 50n)/100n; };
+function openTax(){
+  surfaceTitle.textContent = 'ابزارها ← مالیات حقوق';
+  viewLevel = 'tool';
+  const row = (t,g,i,n,ins)=>`<div class="ins-row"><label for="tx-${g}${i}">${t}</label><input id="tx-${g}${i}" data-g="${g}" ${ins?'data-i="1" ':''}type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" enterkeyhint="next" dir="ltr" placeholder="۰"></div>`;
+  const R = ['جمع کل دستمزد و مزایا','جمع اقلام غیرمشمول','کالای مازاد بر سقف','مبلغ مشمول مالیات','مالیات پلکانی','مالیات مقطوع ۱۰٪ کالا','مالیات نهایی حقوق'];
+  surfaceBody.innerHTML = `<div class="ins">
+    <div class="ins-top"><p>همه‌ی مبالغ به <b>ریال</b> و ماهانه است؛ خالی گذاشتن هر ردیف به معنی <b>۰</b> است. ستون سالانه = ۱۲ برابر ماهانه با جدول سالانه ۱۴۰۵.</p><button type="button" class="ins-clear" id="txClear">پاک کردن</button></div>
+    <label class="tx-ded"><input type="checkbox" id="txDed"><span>کسر حق بیمه سهم کارگر (۷٪ اقلام مشمول بیمه) از مبلغ مشمول مالیات</span></label>
+    <div class="ins-table" id="insTable">
+      <details open><summary><span>اقلام مشمول مالیات (${insFa(TX_TAXABLE.length)} مورد)</span><span class="ins-sub" id="txSubA">۰</span></summary>${TX_TAXABLE.map((x,i)=>row(x[0],'a',i,0,x[1])).join('')}</details>
+      <details><summary><span>اقلام غیرمشمول مالیات (${insFa(TX_EXEMPT.length)} مورد)</span><span class="ins-sub" id="txSubE">۰</span></summary>${TX_EXEMPT.map((t,i)=>row(t,'e',i)).join('')}</details>
+      <details><summary><span>کالا و مزایای غیرنقدی (${insFa(TX_GOODS.length)} مورد)</span><span class="ins-sub" id="txSubK">۰</span></summary><p class="ins-hint">کالا تا سقف ۲/۱۲ معافیت سالانه (۸۰۰٬۰۰۰٬۰۰۰ ریال در سال، حدود ۶۶٬۶۶۶٬۶۶۷ ریال در ماه) معاف است؛ مازاد آن با نرخ مقطوع ۱۰٪ مالیات می‌شود.</p>${TX_GOODS.map((t,i)=>row(t,'k',i)).join('')}</details>
+    </div>
+    <table class="tx-res" aria-live="polite"><thead><tr><th></th><th>ماهانه</th><th>سالانه</th></tr></thead><tbody>${R.map((t,i)=>`<tr${i===6?' class="fin"':''}><td id="txL${i+1}">${t}</td><td id="txM${i+1}">۰</td><td id="txA${i+1}">۰</td></tr>`).join('')}</tbody></table>
+  </div>`;
+  showSurface('rgba(110,198,255,.18)');
+  surfaceBody.classList.add('fit');
+  const $ = id=>surfaceBody.querySelector('#'+id);
+  const table = $('insTable'), ded = $('txDed'), inputs = Array.from(table.querySelectorAll('input'));
+  const calc = ()=>{
+    let Ta = 0n, Ins = 0n, E = 0n, G = 0n;
+    inputs.forEach(i=>{ const n = BigInt(i.dataset.v || '0'); if(i.dataset.g === 'a'){ Ta += n; if(i.dataset.i) Ins += n; } else if(i.dataset.g === 'e') E += n; else G += n; });
+    const D = ded.checked ? (Ins*7n + 50n)/100n : 0n, P = Ta > D ? Ta - D : 0n;
+    const Ga = G*12n, exA = Ga < TX_CAP_A ? Ga : TX_CAP_A, excA = Ga - exA;
+    const pm = txProg(P,1n), pa = txProg(P*12n,12n), fm = (excA + 60n)/120n, fa = (excA + 5n)/10n;
+    const M = [Ta+E+G, E + (exA+6n)/12n, (excA+6n)/12n, P, pm, fm, pm+fm];
+    const A = [(Ta+E+G)*12n, E*12n + exA, excA, P*12n, pa, fa, pa+fa];
+    M.forEach((n,i)=>{ $('txM'+(i+1)).textContent = insFa(n); $('txA'+(i+1)).textContent = insFa(A[i]); });
+    $('txL4').textContent = ded.checked ? 'مشمول مالیات (پس از بیمه)' : 'مبلغ مشمول مالیات';
+    $('txSubA').textContent = insFa(Ta); $('txSubE').textContent = insFa(E); $('txSubK').textContent = insFa(G);
+  };
+  const fmt = inp=>{
+    const digitsBefore = insLatin(inp.value.slice(0, inp.selectionStart || 0)).replace(/\D/g,'').length;
+    const raw = insLatin(inp.value).replace(/\D/g,'').replace(/^0+(?=\d)/,'').slice(0,12);
+    inp.dataset.v = raw; inp.value = raw ? insFa(raw) : '';
+    let c = 0, cnt = 0; while(c < inp.value.length && cnt < digitsBefore){ if(FA_D.includes(inp.value[c])) cnt++; c++; }
+    try{ inp.setSelectionRange(c,c); }catch(e){}
+  };
+  table.addEventListener('input', e=>{ if(e.target.tagName === 'INPUT'){ fmt(e.target); calc(); } });
+  table.addEventListener('keydown', e=>{
+    if(e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;
+    e.preventDefault();
+    const next = inputs[inputs.indexOf(e.target) + 1];
+    if(next){ const d = next.closest('details'); if(d) d.open = true; next.focus(); } else e.target.blur();
+  });
+  ded.addEventListener('change', calc);
+  $('txClear').addEventListener('click', ()=>{ inputs.forEach(i=>{ i.value = ''; i.dataset.v = ''; }); calc(); });
 }
 function closeSurface(){
   viewLevel='home';
@@ -2182,14 +2439,17 @@ surfaceBody.addEventListener('scroll', wakeProx, {passive:true});
 /* Hash routing: every section has its own link and the browser/phone back button works.
    #intro  #skills  #jobs  #self  #contact  #certs  #certs/is1  #certs/topic-tp1 */
 function go(h){ if(location.hash === '#'+h || (!h && !location.hash)) route(); else location.hash = h; }
-function goBack(){ go(viewLevel==='issuer' || viewLevel==='topic' ? 'certs' : viewLevel==='job' ? 'jobs' : viewLevel==='process' ? 'processes' : ''); }
+function goBack(){ go(viewLevel==='issuer' || viewLevel==='topic' ? 'certs' : viewLevel==='job' ? 'jobs' : viewLevel==='tool' ? 'tools' : viewLevel==='process' ? 'processes' : ''); }
 function route(){
   let h = ''; try{ h = decodeURIComponent(location.hash.slice(1)); }catch(e){}
   setViewerOpen(false);
   const [a, b] = h.split('/');
   if(a === 'simple'){ openSimple(); return; }
   closeSimple();
-  if(a === 'jobs' && b && JOBS.some(j=>j.key===b)){ openJob(b); }
+  if((a==='tools' && ACTIVE_DATA.features.tools===false) || (a==='processes' && ACTIVE_DATA.features.process===false)){ closeSurface(); return; }
+  if(a === 'tools' && b === 'insurance'){ openInsurance(); }
+  else if(a === 'tools' && b === 'tax'){ openTax(); }
+  else if(a === 'jobs' && b && JOBS.some(j=>j.key===b)){ openJob(b); }
   else if(a === 'processes' && b && PROCESSES.some(p=>p.key===b)){ openProcess(b); }
   else if(a === 'certs'){
     if(b && ISSUERS.some(i=>i.key===b)) openIssuer(b);
@@ -2220,11 +2480,13 @@ document.getElementById('svPdf').addEventListener('click',()=>{ try{ window.prin
   if(seen){ hint.classList.add('gone'); return; }
   document.querySelectorAll('.planet[data-target]').forEach(b=>b.addEventListener('click',()=>{ hint.classList.add('gone'); try{ localStorage.setItem('ro-seen','1'); }catch(e){} },{once:true}));
 })();
+/* variant: role line, title, print/simple text and skill order of the static resume */
 /* role line, title, print/simple text are filled by renderShell() from the data */
 addEventListener('hashchange', route);
 document.querySelectorAll('.planet[data-target]').forEach(btn=>btn.addEventListener('click',()=>{ setOrigin(btn); go(btn.dataset.target); }));
 document.getElementById('contactBtn').addEventListener('click',e=>{ setOrigin(e.currentTarget); go('contact'); });
 document.getElementById('procBtn').addEventListener('click',e=>{ setOrigin(e.currentTarget); go('processes'); });
+document.getElementById('toolsBtn').addEventListener('click',e=>{ setOrigin(e.currentTarget); go('tools'); });
 document.getElementById('backBtn').addEventListener('click',goBack);
 document.getElementById('backBtnBottom').addEventListener('click',()=>go(''));
 
@@ -2402,7 +2664,7 @@ bindSwitch(fontToggle, '--f', ()=>fontV, applyFont);
 const dirToggle = document.getElementById('dirToggle');
 let dirV = 0; try{ dirV = localStorage.getItem('ro-dir')==='ccw' ? 1 : 0; }catch(e){}
 function applyDir(v, save){
-  dirV = v; dirSign = v ? -1 : 1;
+  dirV = v; dirSign = v ? -1 : 1; document.documentElement.setAttribute('data-rot', v ? 'ccw' : 'cw');
   document.documentElement.style.setProperty('--d', v);
   dirToggle.setAttribute('aria-checked', v ? 'true' : 'false');
   if(save){ try{ localStorage.setItem('ro-dir', v ? 'ccw' : 'cw'); }catch(e){} }
@@ -2458,7 +2720,7 @@ themeToggle.addEventListener('pointercancel', endDrag);
 themeToggle.addEventListener('click', e=>{ if(e.detail === 0) applyTheme(themeT > .5 ? 'dark' : 'light', true); });
 applyTheme(document.documentElement.getAttribute('data-theme'), false, true);
 /* follow the device theme live until the visitor picks one manually */
-try{ matchMedia('(prefers-color-scheme: light)').addEventListener('change', e=>{ let m=null; try{ m=localStorage.getItem('ro-theme-m'); }catch(_){} if(!m) applyTheme(e.matches?'light':'dark'); }); }catch(e){}
+/* (the start theme is fixed by START_DEFAULTS; the device theme is not followed) */
 
 /* ---------- settings menu ---------- */
 const settingsBtn = document.getElementById('settingsBtn');
@@ -2510,7 +2772,10 @@ async function makePng(){
   lbl.innerHTML = old; btn.disabled = false;
 }
 document.getElementById('dlPng').addEventListener('click', makePng);
+{ const moreHandle = document.getElementById('moreHandle'), moreBox = document.getElementById('moreSettings');
+  moreHandle.addEventListener('click', ()=>{ const o = moreBox.hidden; moreBox.hidden = !o; moreHandle.setAttribute('aria-expanded', o ? 'true' : 'false'); }); }
 document.addEventListener('keydown', e=>{
+  if(e.code === 'KeyH' && !e.ctrlKey && !e.metaKey && !e.altKey && !/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName || '') && (viewLevel !== 'home' || location.hash === '#simple')){ e.preventDefault(); go(''); return; }
   if(e.key!=='Escape') return;
   if(!ghMenu.hidden){ ghSet(false); return; }
   if(!dlMenu.hidden){ dlSet(false); return; }
@@ -2542,13 +2807,23 @@ speedRange.addEventListener('input', ()=>{
   try{ localStorage.setItem('ro-speed', speedMul); }catch(e){}
   renderSpeed();
 });
-try{ const v = parseFloat(localStorage.getItem('ro-speed')); if(v) speedMul = clampSpeed(v); }catch(e){}
+speedMul = clampSpeed(START_DEFAULTS.speed);   // always starts from the default, saved speed is not restored
 renderSpeed();
+/* glow lever: --glw scales every glow in the file (ring pulses and arcs, pointer ring on planets, timeline node, chart bars, skill dots, step numbers) */
+{ const glowRange = document.getElementById('glowRange'), glowVal = document.getElementById('glowVal');
+  function setGlow(pct){
+    document.documentElement.style.setProperty('--glw', (pct/100).toFixed(2));
+    glowVal.textContent = faNum(Math.round(pct)) + '٪'; glowRange.value = pct;
+    glowRange.style.setProperty('--fill-pct', pct + '%');
+  }
+  glowRange.addEventListener('input', ()=>setGlow(+glowRange.value));
+  setGlow(START_DEFAULTS.glow*100);
+}
 renderShell();
 if(/[?&]view=simple/.test(location.search) && !location.hash) history.replaceState(null,'',location.pathname+location.search+'#simple');
 route();
 bootRoute = false;
-var IC = {"🔄": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"6\" rx=\"1\"/><rect x=\"13\" y=\"15\" width=\"8\" height=\"6\" rx=\"1\"/><path d=\"M7 9v4a2 2 0 0 0 2 2h4M11 6h4a2 2 0 0 1 2 2v7\"/>", "💡": "<path d=\"M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/>", "🐙": "<path d=\"M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14\"/>", "🌐": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"/>", "📳": "<rect x=\"8\" y=\"3\" width=\"8\" height=\"18\" rx=\"2\"/><path d=\"M4 8v8M20 8v8M2 10.5v3M22 10.5v3\"/>", "🪪": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><circle cx=\"9\" cy=\"11\" r=\"2\"/><path d=\"M6 16c.6-1.6 2-2.4 3-2.4s2.4.8 3 2.4M14 10h4M14 13h3\"/>", "🛠": "<path d=\"M14.7 6.3a4 4 0 0 0-5 5L3.5 17.5a1.6 1.6 0 0 0 2.3 2.3l6.2-6.2a4 4 0 0 0 5-5l-2.4 2.4-2-.6-.6-2z\"/>", "📜": "<path d=\"M8 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z\"/><path d=\"M8 9h8M8 13h6\"/>", "💼": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 13h18\"/>", "🧭": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M15.5 8.5l-2 5-5 2 2-5z\"/>", "⚙": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14.3 3h-4l-.4 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9a7 7 0 0 0 2 1.2l.4 2.6h4l.4-2.6a7 7 0 0 0 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z\"/>", "☀": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4\"/>", "🌙": "<path d=\"M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z\"/>", "📄": "<path d=\"M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/><path d=\"M14 3v5h5M9 13h6M9 17h6\"/>", "🖼": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><circle cx=\"9\" cy=\"10\" r=\"1.6\"/><path d=\"M4 18l5-5 4 4 3-3 4 4\"/>", "📞": "<path d=\"M5 4h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L15 14l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z\"/>", "🏠": "<path d=\"M4 11l8-7 8 7M6 10v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1v-9\"/>", "🎯": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.2\"/>", "📑": "<rect x=\"5\" y=\"6\" width=\"11\" height=\"15\" rx=\"1\"/><path d=\"M8 3h9a1 1 0 0 1 1 1v13M8 11h5M8 15h5\"/>", "📊": "<path d=\"M4 20V10M10 20V4M16 20v-7M22 20H2\"/>", "💻": "<rect x=\"4\" y=\"5\" width=\"16\" height=\"11\" rx=\"1.5\"/><path d=\"M2 20h20\"/>", "🤝": "<circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 6.5a3 3 0 0 1 0 5.5M18 14.5c2 .7 3.5 2.5 3.5 5.5\"/>", "🧾": "<path d=\"M6 3h12v18l-3-2-3 2-3-2-3 2z\"/><path d=\"M9 8h6M9 12h6\"/>", "🦺": "<path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>", "🛡": "<path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/>", "🗂": "<path d=\"M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "🔑": "<circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M16 7l3 3M14 9l2 2\"/>", "🏭": "<path d=\"M3 21V10l6 3V10l6 3V6h3v15zM3 21h18\"/>", "🏆": "<path d=\"M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4\"/>", "🏗": "<path d=\"M5 21V8M5 8h14M5 8l6-4M19 8v4M17 12h4v3h-4zM3 21h6\"/>", "✅": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M8 12.5l2.7 2.7 5.3-5.6\"/>", "🏙": "<path d=\"M4 21V9l5-3v15M9 21V4l7 3v14M16 21v-9l4 2v7M3 21h18\"/>", "⚖": "<path d=\"M12 4v16M6 20h12M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z\"/>", "🎓": "<path d=\"M2 9l10-5 10 5-10 5zM6 11.5V16c2 2 10 2 12 0v-4.5\"/>", "🎬": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 11h18M7 6l3 5M12 6l3 5\"/>", "🏛": "<path d=\"M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 21h18M3 18h18\"/>", "💬": "<path d=\"M4 5h16v11H9l-5 4z\"/>", "⏱": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4l3 2M9 3h6\"/>", "📅": "<rect x=\"4\" y=\"5\" width=\"16\" height=\"15\" rx=\"2\"/><path d=\"M4 10h16M8 3v4M16 3v4\"/>", "⏸": "<path d=\"M8 5v14M16 5v14\"/>", "▶": "<path d=\"M7 5l12 7-12 7z\"/>", "📕": "<path d=\"M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/><path d=\"M14 3v5h5M9 13h6M9 17h6\"/>", "📁": "<path d=\"M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "⏳": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4l3 2M9 3h6\"/>"};
+var IC = {"🧮": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><path d=\"M8 7h8\"/><path d=\"M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18h.01M12 18h.01\"/>", "🔄": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"6\" rx=\"1\"/><rect x=\"13\" y=\"15\" width=\"8\" height=\"6\" rx=\"1\"/><path d=\"M7 9v4a2 2 0 0 0 2 2h4M11 6h4a2 2 0 0 1 2 2v7\"/>", "💡": "<path d=\"M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/>", "🐙": "<path d=\"M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14\"/>", "🌐": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"/>", "📳": "<rect x=\"8\" y=\"3\" width=\"8\" height=\"18\" rx=\"2\"/><path d=\"M4 8v8M20 8v8M2 10.5v3M22 10.5v3\"/>", "🪪": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><circle cx=\"9\" cy=\"11\" r=\"2\"/><path d=\"M6 16c.6-1.6 2-2.4 3-2.4s2.4.8 3 2.4M14 10h4M14 13h3\"/>", "🛠": "<path d=\"M14.7 6.3a4 4 0 0 0-5 5L3.5 17.5a1.6 1.6 0 0 0 2.3 2.3l6.2-6.2a4 4 0 0 0 5-5l-2.4 2.4-2-.6-.6-2z\"/>", "📜": "<path d=\"M8 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z\"/><path d=\"M8 9h8M8 13h6\"/>", "💼": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 13h18\"/>", "🧭": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M15.5 8.5l-2 5-5 2 2-5z\"/>", "⚙": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14.3 3h-4l-.4 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9a7 7 0 0 0 2 1.2l.4 2.6h4l.4-2.6a7 7 0 0 0 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z\"/>", "☀": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4\"/>", "🌙": "<path d=\"M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z\"/>", "📄": "<path d=\"M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/><path d=\"M14 3v5h5M9 13h6M9 17h6\"/>", "🖼": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><circle cx=\"9\" cy=\"10\" r=\"1.6\"/><path d=\"M4 18l5-5 4 4 3-3 4 4\"/>", "📞": "<path d=\"M5 4h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L15 14l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z\"/>", "🏠": "<path d=\"M4 11l8-7 8 7M6 10v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1v-9\"/>", "🎯": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.2\"/>", "📑": "<rect x=\"5\" y=\"6\" width=\"11\" height=\"15\" rx=\"1\"/><path d=\"M8 3h9a1 1 0 0 1 1 1v13M8 11h5M8 15h5\"/>", "📊": "<path d=\"M4 20V10M10 20V4M16 20v-7M22 20H2\"/>", "💻": "<rect x=\"4\" y=\"5\" width=\"16\" height=\"11\" rx=\"1.5\"/><path d=\"M2 20h20\"/>", "🤝": "<circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 6.5a3 3 0 0 1 0 5.5M18 14.5c2 .7 3.5 2.5 3.5 5.5\"/>", "🧾": "<path d=\"M6 3h12v18l-3-2-3 2-3-2-3 2z\"/><path d=\"M9 8h6M9 12h6\"/>", "🦺": "<path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>", "🛡": "<path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/>", "🗂": "<path d=\"M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "🔑": "<circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M16 7l3 3M14 9l2 2\"/>", "🏭": "<path d=\"M3 21V10l6 3V10l6 3V6h3v15zM3 21h18\"/>", "🏆": "<path d=\"M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4\"/>", "🏗": "<path d=\"M5 21V8M5 8h14M5 8l6-4M19 8v4M17 12h4v3h-4zM3 21h6\"/>", "✅": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M8 12.5l2.7 2.7 5.3-5.6\"/>", "🏙": "<path d=\"M4 21V9l5-3v15M9 21V4l7 3v14M16 21v-9l4 2v7M3 21h18\"/>", "⚖": "<path d=\"M12 4v16M6 20h12M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z\"/>", "🎓": "<path d=\"M2 9l10-5 10 5-10 5zM6 11.5V16c2 2 10 2 12 0v-4.5\"/>", "🎬": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 11h18M7 6l3 5M12 6l3 5\"/>", "🏛": "<path d=\"M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 21h18M3 18h18\"/>", "💬": "<path d=\"M4 5h16v11H9l-5 4z\"/>", "⏱": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4l3 2M9 3h6\"/>", "📅": "<rect x=\"4\" y=\"5\" width=\"16\" height=\"15\" rx=\"2\"/><path d=\"M4 10h16M8 3v4M16 3v4\"/>", "⏸": "<path d=\"M8 5v14M16 5v14\"/>", "▶": "<path d=\"M7 5l12 7-12 7z\"/>", "📕": "<path d=\"M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/><path d=\"M14 3v5h5M9 13h6M9 17h6\"/>", "📁": "<path d=\"M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "⏳": "<circle cx=\"12\" cy=\"13\" r=\"8\"/><path d=\"M12 9v4l3 2M9 3h6\"/>"};
 const EMO = /([\u23F1-\u23F8\u2600\u2696\u2699\u25B6]|[\u{1F300}-\u{1FAFF}])\uFE0F?/gu;
 function iconNode(k){ const v=document.createElementNS('http://www.w3.org/2000/svg','svg'); v.setAttribute('viewBox','0 0 24 24'); v.setAttribute('class','ic'); v.setAttribute('aria-hidden','true'); v.innerHTML=IC[k]; return v; }
 function iconize(root){
@@ -2594,6 +2869,116 @@ function endRot(e){
 window.addEventListener('pointerup', endRot); window.addEventListener('pointercancel', endRot);
 window.addEventListener('click', e=>{ if(suppressClick){ e.stopPropagation(); e.preventDefault(); } }, true);
 iconize(document.body);
+
+/* ---------- centre photo: tap = 30% bigger for 2 seconds (later: opens a video) ---------- */
+{ const sun = document.getElementById('sunPhoto'); let tm = 0;
+  const zoom = ()=>{ sun.classList.add('zoom'); clearTimeout(tm); tm = setTimeout(()=>sun.classList.remove('zoom'), 2000); };
+  sun.addEventListener('click', zoom);
+  sun.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); zoom(); } });
+}
+
+/* ---------- call guard: outside 08:00-18:00 ask before calling ---------- */
+{ const box = document.getElementById('callGuard'), go = document.getElementById('cgGo'), wa = document.getElementById('cgWa'), no = document.getElementById('cgNo');
+  let target = '', opener = null;
+  const off = ()=>{ const h = new Date().getHours(); return h < 8 || h >= 18; };
+  const open = href=>{ target = href; opener = document.activeElement; wa.href = 'https://wa.me/' + href.replace(/\D/g,''); box.hidden = false; setTimeout(()=>wa.focus(), 30); };
+  const close = ()=>{ box.hidden = true; if(opener && opener.focus) opener.focus(); };
+  document.addEventListener('click', e=>{
+    const a = e.target.closest && e.target.closest('a[href^="tel:"]'); if(!a || box.contains(a) || !off()) return;
+    e.preventDefault(); e.stopPropagation(); open(a.getAttribute('href'));
+  }, true);
+  go.addEventListener('click', ()=>{ const t = target; box.hidden = true; location.href = t; });
+  wa.addEventListener('click', ()=>{ box.hidden = true; });
+  no.addEventListener('click', close);
+  box.addEventListener('click', e=>{ if(e.target === box) close(); });
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape' && !box.hidden){ e.stopPropagation(); close(); } }, true);
+}
+
+/* ---------- settings gear: hold and drag, the panel unrolls with the finger; release to settle ---------- */
+{ let g = null, suppress = false;
+  const clamp = v => Math.min(1, Math.max(0, v));
+  settingsBtn.addEventListener('pointerdown', e=>{ if(e.button > 0) return; try{ settingsBtn.setPointerCapture(e.pointerId); }catch(_){} g = {y:e.clientY, open0:!settingsPanel.hidden, H:0, moved:false, p:settingsPanel.hidden ? 0 : 1}; });
+  settingsBtn.addEventListener('pointermove', e=>{
+    if(!g) return; const dy = e.clientY - g.y;
+    if(!g.moved){
+      if(Math.abs(dy) < 8) return; g.moved = true;
+      try{ settingsBtn.setPointerCapture(e.pointerId); }catch(_){}
+      dlSet(false); ghSet(false);
+      settingsPanel.classList.remove('sp-anim'); settingsPanel.classList.add('sp-drag'); settingsPanel.style.setProperty('--sp', g.open0 ? 1 : 0);
+      settingsPanel.hidden = false; g.H = Math.max(120, settingsPanel.scrollHeight || settingsPanel.offsetHeight); settingsBtn.setAttribute('aria-expanded', 'true');
+    }
+    g.p = clamp((g.open0 ? 1 : 0) + dy/g.H); settingsPanel.style.setProperty('--sp', g.p.toFixed(3));
+  });
+  const end = ()=>{
+    if(!g) return; const s = g; g = null; if(!s.moved) return;
+    suppress = true; setTimeout(()=>{ suppress = false; }, 80);
+    const open = s.p > .5; settingsPanel.classList.add('sp-anim'); settingsPanel.style.setProperty('--sp', open ? 1 : 0);
+    setTimeout(()=>{ settingsPanel.classList.remove('sp-drag','sp-anim'); settingsPanel.style.removeProperty('--sp'); setSettings(open); }, 260);
+  };
+  settingsBtn.addEventListener('pointerup', end); settingsBtn.addEventListener('pointercancel', end);
+  settingsBtn.addEventListener('click', e=>{ if(suppress){ e.stopImmediatePropagation(); e.preventDefault(); } }, true);
+}
+
+/* ---------- orbits: one slider (0 = off) for the pulsing glow and the turning sweep arc.
+   Pulses run one ring at a time, in a shuffled order and with varying length (never more than two overlap), so the page stays light. ---------- */
+{ const orbRange = document.getElementById('orbRange'), orbVal = document.getElementById('orbVal'), rings = [...document.querySelectorAll('.ring-inner')], root = document.documentElement;
+  let level = START_DEFAULTS.orbits, bag = [], timer = 0, last = -1;
+  const canPulse = ()=> level > 0 && !reduceMotion && !document.hidden && !stage.classList.contains('hidden') && !motionPaused;
+  function pulse(){
+    timer = 0; if(!canPulse()){ timer = setTimeout(pulse, 1200); return; }
+    if(!bag.length){ bag = rings.map((_, i)=>i).sort(()=>Math.random() - .5); if(bag[0] === last && bag.length > 1) bag.push(bag.shift()); }
+    const i = bag.shift(); last = i; const el = rings[i], d = (1800 + Math.random()*1800) / speedMul;
+    el.style.setProperty('--gdur', d.toFixed(0) + 'ms'); el.classList.remove('glowing'); void el.offsetWidth; el.classList.add('glowing');
+    el.addEventListener('animationend', ()=>el.classList.remove('glowing'), {once:true});
+    timer = setTimeout(pulse, d*.62 + Math.random()*400);
+  }
+  function schedule(ms){ clearTimeout(timer); timer = setTimeout(pulse, ms); }
+  function setOrbits(pct){
+    level = Math.min(100, Math.max(0, pct)); root.style.setProperty('--orb', (level/100).toFixed(2));
+    orbVal.textContent = level === 0 ? 'خاموش' : faNum(level) + '٪'; orbRange.value = level; orbRange.style.setProperty('--fill-pct', level + '%');
+    if(level === 0){ clearTimeout(timer); rings.forEach(r=>r.classList.remove('glowing')); } else schedule(700);
+  }
+  orbRange.addEventListener('input', ()=>setOrbits(+orbRange.value));
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden && level > 0) schedule(600); });
+  setOrbits(START_DEFAULTS.orbits);
+}
+
+/* public version label (settings panel + simple view); change only here */
+const APP_VERSION = String(VERSION).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]).replace(/\./g,'٫');
+document.querySelectorAll('.ver-line').forEach(e=>{ e.innerHTML = 'نسخه <bdi>' + APP_VERSION + '</bdi> · در حال تکمیل'; });
+</script>
+<script>
+/* achievement cards: open from the home stats; backdrop click, Esc, X or the home button closes */
+(function(){
+  const D = k => { const s = ACTIVE_DATA.stats[+k]; return s ? {n:s.value, t:s.label||s.short, p:s.detail||''} : null; };
+  const ov=document.getElementById('statOv'), card=ov.querySelector('.st-card'), $=id=>document.getElementById(id);
+  const calm=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let last=null, busy=false;
+  function open(k,btn){
+    const d=D(k); if(!d||!ov.hidden) return;
+    $('stNum').textContent=d.n; $('stNum').classList.toggle('zero',/^[0۰]$/.test(String(d.n).trim())); $('stTitle').textContent=d.t; $('stText').textContent=d.p;
+    ov.hidden=false; last=btn;
+    if(!calm()){
+      const r=btn.getBoundingClientRect(), c=card.getBoundingClientRect();
+      card.style.transformOrigin=(r.left+r.width/2-c.left)+'px '+(r.top+r.height/2-c.top)+'px';
+      card.animate([{transform:'scale(.25)',opacity:0},{transform:'scale(1)',opacity:1}],{duration:260,easing:'cubic-bezier(.22,1,.36,1)'});
+      ov.animate([{opacity:0},{opacity:1}],{duration:200});
+    }
+    card.focus({preventScroll:true});
+  }
+  function close(){
+    if(ov.hidden||busy) return;
+    const done=()=>{ ov.hidden=true; busy=false; if(last) last.focus({preventScroll:true}); };
+    if(calm()){ done(); return; }
+    busy=true;
+    ov.animate([{opacity:1},{opacity:0}],{duration:150}).onfinish=done;
+    card.animate([{transform:'scale(1)',opacity:1},{transform:'scale(.9)',opacity:0}],{duration:150});
+  }
+  document.getElementById('homeStats').addEventListener('click',e=>{ const b=e.target.closest('.stat'); if(b) open(b.dataset.k,b); });
+  ov.addEventListener('click',e=>{ if(e.target===ov) close(); });
+  $('stX').addEventListener('click',close); $('stHome').addEventListener('click',close);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!ov.hidden){ e.stopImmediatePropagation(); close(); } },true);
+})();
 </script>
 <script>
 /* ===== Orbit Resume Template — in-page editor (no external libraries) ===== */
@@ -2624,8 +3009,8 @@ function toModel(D){
   var P=D.personal;
   return {
     personal:{name:P.name,role:P.role||V.role||'',printRole:V.printRole||'',location:P.location,tagline:P.tagline,metaDescription:P.metaDescription,militaryStatus:P.militaryStatus,photo:P.photo||''},
-    profile:{summary:V.summary||'',chips:(V.chips||[]).slice(),kw:(V.kw||[]).slice()},
-    stats:D.stats.map(function(s){return {value:s.value||'',label:s.label||'',short:s.short||''};}),
+    profile:{summary:V.summary||'',intro:V.intro||'',chips:(V.chips||[]).slice(),kw:(V.kw||[]).slice()},
+    stats:D.stats.map(function(s){return {value:s.value||'',label:s.label||'',short:s.short||'',detail:s.detail||''};}),
     timeline:D.timeline.map(function(s){return {date:s.date||'',title:s.title||'',org:s.org||'',desc:s.desc||''};}),
     education:D.education.map(function(s){return {degree:s.degree||'',school:s.school||'',from:s.from||'',to:s.to||''};}),
     research:D.research.map(function(s){return {title:s.title||'',venue:s.venue||'',year:s.year||'',coauthor:s.coauthor||'',url:s.url||''};}),
@@ -2638,10 +3023,7 @@ function toModel(D){
       holland:{code:D.selfKnowledge.holland.code||'',items:D.selfKnowledge.holland.items.map(function(i){return {title:i.title||'',desc:i.desc||'',evidence:i.evidence||''};})},
       disclaimer:D.selfKnowledge.disclaimer||''},
     contact:D.contact.map(function(c){return {type:CT_LABEL[c.type]?c.type:'website',value:c.value||''};}),
-    process:{
-      concepts:Object.keys(D.process.concepts).map(function(k){var c=D.process.concepts[k];return {key:k,title:c.title||'',sub:c.sub||'',text:(c.paras||[]).join('\n\n')};}),
-      areas:D.process.areas.map(function(a){return {key:a.key||'',icon:a.icon||'',title:a.title||'',sub:a.sub||'',concepts:(a.concepts||[]).slice(),steps:(a.steps||[]).map(function(s){return {title:s.title||'',short:s.short||'',points:(s.points||[]).slice(),exp:s.exp||'',concepts:(s.concepts||[]).slice()};})};})
-    }
+    features:{tools:(D.features||{}).tools!==false,process:(D.features||{}).process!==false}
   };
 }
 function buildContact(type,value){
@@ -2658,9 +3040,9 @@ function fromModel(M,prev){
   var out=clone(prev), P=M.personal;
   out.personal={name:T(P.name),role:T(P.role),location:T(P.location),tagline:T(P.tagline),metaDescription:T(P.metaDescription),militaryStatus:T(P.militaryStatus),photo:P.photo||''};
   var pf=out.profiles[ACTIVE_PROFILE_KEY]||(out.profiles[ACTIVE_PROFILE_KEY]=clone(prev.profiles['default']));
-  pf.role=out.personal.role; pf.printRole=T(P.printRole); pf.summary=T(M.profile.summary);
+  pf.role=out.personal.role; pf.printRole=T(P.printRole); pf.summary=T(M.profile.summary); pf.intro=T(M.profile.intro);
   pf.chips=lines(M.profile.chips); pf.kw=lines(M.profile.kw); pf.order=null; pf.printOrder=null;
-  out.stats=M.stats.filter(function(s){return T(s.value)||T(s.label);}).map(function(s){return {value:T(s.value),label:T(s.label),short:T(s.short)};});
+  out.stats=M.stats.filter(function(s){return T(s.value)||T(s.label);}).map(function(s){return {value:T(s.value),label:T(s.label),short:T(s.short),detail:T(s.detail)};});
   out.timeline=M.timeline.filter(function(s){return T(s.date)||T(s.title)||T(s.org)||T(s.desc);}).map(function(s){return {date:T(s.date),title:T(s.title),org:T(s.org),desc:T(s.desc)};});
   out.education=M.education.filter(function(s){return T(s.degree)||T(s.school);}).map(function(s){return {degree:T(s.degree),school:T(s.school),from:T(s.from),to:T(s.to)};});
   out.research=M.research.filter(function(s){return T(s.title);}).map(function(s){return {title:T(s.title),venue:T(s.venue),year:T(s.year),coauthor:T(s.coauthor),url:fixUrl(s.url)};});
@@ -2693,22 +3075,7 @@ function fromModel(M,prev){
     holland:{code:T(S.holland.code),items:S.holland.items.filter(function(i){return T(i.title)||T(i.desc);}).map(function(i,n){return {rank:n+1,title:T(i.title),desc:T(i.desc),evidence:T(i.evidence)};})},
     disclaimer:T(S.disclaimer)};
   out.contact=M.contact.filter(function(c){return T(c.value);}).map(function(c){return buildContact(c.type,c.value);});
-  /* process */
-  var cons={}, used={};
-  M.process.concepts.forEach(function(c){
-    var title=T(c.title); if(!title) return;
-    var key=T(c.key); if(!key||used[key]){key=uniqKey('c',used);} used[key]=1; c.key=key;
-    cons[key]={title:title,sub:T(c.sub),paras:T(c.text).split(/\n\s*\n/).map(T).filter(Boolean)};
-  });
-  var ua={}, areas=[];
-  M.process.areas.forEach(function(a){
-    var title=T(a.title); if(!title) return;
-    var key=T(a.key); if(!key||ua[key]){key=uniqKey('p',ua);} ua[key]=1; a.key=key;
-    var ok=function(arr){return (arr||[]).filter(function(k){return cons[k];});};
-    areas.push({key:key,icon:T(a.icon)||'🔄',title:title,sub:T(a.sub),concepts:ok(a.concepts),
-      steps:a.steps.filter(function(s){return T(s.title)||T(s.short)||lines(s.points).length;}).map(function(s){return {title:T(s.title),short:T(s.short),points:lines(s.points),exp:T(s.exp),concepts:ok(s.concepts)};})});
-  });
-  out.process={concepts:cons,areas:areas};
+  out.features={tools:M.features.tools!==false,process:M.features.process!==false};
   return out;
 }
 function syncInPlace(t,s){
@@ -2866,14 +3233,15 @@ var SECTIONS=[
  }},
  {id:'summary',icon:'📝',title:'خلاصه و برچسب‌ها',build:function(b){
    b.append(help('این متن در بخش «معرفی من» (سیاره‌ی آبی)، در نمای چاپی و PDF نمایش داده می‌شود.'));
-   b.append(fArea(M.profile,'summary','خلاصه‌ی حرفه‌ای','در چند جمله بنویسید چه کاری می‌کنید و چه ارزشی دارید…',{rows:6}));
+   b.append(fArea(M.profile,'summary','خلاصه‌ی حرفه‌ای (رسمی؛ برای PDF و نمای ساده)','در چند جمله بنویسید چه کاری می‌کنید و چه ارزشی دارید…',{rows:5}));
+   b.append(fArea(M.profile,'intro','متن معرفی به زبان اول‌شخص (اختیاری)','مثلاً: من کارشناس … هستم و …',{rows:5,hint:'در بخش «معرفی من» نمایش داده می‌شود؛ اگر خالی بماند، همان «خلاصه» نمایش داده می‌شود.'}));
    b.append(fLines(M.profile,'chips','برچسب‌های کوتاه','مثلاً:\nجذب و استخدام\nقراردادها\nحقوق و دستمزد'));
    b.append(fLines(M.profile,'kw','کلیدواژه‌های تخصصی (در بخش مهارت‌ها)','مثلاً:\nSourcing\nOnboarding\nExcel'));
  }},
  {id:'stats',icon:'📊',title:'آمارها و دستاوردهای عددی',build:function(b){
    b.append(help('عددهای شاخص؛ مثلاً «بیش از ۱۲۰» با توضیح «استخدام موفق». چهار مورد اول زیر منظومه‌ی صفحه‌ی اصلی هم نشان داده می‌شود.'));
-   b.append(fList(M.stats,{noun:'آمار',add:'+ افزودن آمار',title:function(s){return [s.value,s.label].filter(Boolean).join(' ');},blank:function(){return {value:'',label:'',short:''};},
-     build:function(s,x){x.append(fText(s,'value','عدد یا مقدار','مثلاً: بیش از ۱۲۰'),fText(s,'label','توضیح','مثلاً: استخدام موفق در پروژه‌ها'),fText(s,'short','برچسب کوتاه برای صفحه‌ی اصلی (اختیاری)','مثلاً: استخدام'));}}));
+   b.append(fList(M.stats,{noun:'آمار',add:'+ افزودن آمار',title:function(s){return [s.value,s.label].filter(Boolean).join(' ');},blank:function(){return {value:'',label:'',short:'',detail:''};},
+     build:function(s,x){x.append(fText(s,'value','عدد یا مقدار','مثلاً: بیش از ۱۲۰'),fText(s,'label','توضیح','مثلاً: استخدام موفق در پروژه‌ها'),fText(s,'short','برچسب کوتاه برای صفحه‌ی اصلی (اختیاری)','مثلاً: استخدام'),fArea(s,'detail','توضیح کامل (با لمس این آمار در صفحه‌ی اصلی باز می‌شود؛ اختیاری)','چند جمله درباره‌ی این دستاورد',{rows:3}));}}));
  }},
  {id:'timeline',icon:'🧭',title:'مسیر من (تحصیل و کار)',build:function(b){
    b.append(help('مسیر را به ترتیب زمان بنویسید؛ در بخش «معرفی من» به شکل خط زمانی نمایش داده می‌شود.'));
@@ -2954,23 +3322,10 @@ var SECTIONS=[
        x.append(fSel(c,'type','نوع',CT_OPTS,{after:paintV}),vWrap); paintV();
      }}));
  }},
- {id:'process',icon:'🔄',title:'فرآیندها (دانشنامه)',build:function(b){
-   b.append(emojiList());
-   b.append(help('این بخش محتوای عمومی آماده دارد و شخصی نیست؛ می‌توانید ویرایش، حذف یا فرآیند تازه اضافه کنید. هر «فرآیند» چند مرحله دارد و هر مرحله می‌تواند به «مفاهیم» (واژه‌نامه) وصل شود.'));
-   b.append(sub('فرآیندها'));
-   var consOpts=function(){return M.process.concepts.filter(function(c){return T(c.title);}).map(function(c){return [c.key,c.title];});};
-   b.append(fList(M.process.areas,{noun:'فرآیند',add:'+ افزودن فرآیند',title:function(a){return [a.icon,a.title].filter(Boolean).join(' ');},blank:function(){return {key:'',icon:'',title:'',sub:'',concepts:[],steps:[]};},
-     build:function(a,x){
-       x.append(fText(a,'title','عنوان فرآیند','مثلاً: جذب و استخدام'),fText(a,'sub','زیرعنوان','مثلاً: از نیازسنجی تا ورود به سازمان'),fText(a,'icon','ایموجی (اختیاری)','🔄',{list:'edEmoji'}));
-       x.append(fChecks(a,'concepts','مفاهیم مرتبط با این فرآیند',consOpts()));
-       x.append(sub('مراحل'));
-       x.append(fList(a.steps,{noun:'مرحله',add:'+ افزودن مرحله',title:function(s){return s.title;},blank:function(){return {title:'',short:'',points:[],exp:'',concepts:[]};},
-         build:function(s,y){y.append(fText(s,'title','عنوان مرحله',''),fArea(s,'short','خلاصه‌ی یک‌جمله‌ای','',{rows:2}),fLines(s,'points','نکات و اقدام‌ها','',{rows:5}),
-           fArea(s,'exp','تجربه‌ی شخصی شما در این مرحله (اختیاری)','فقط اگر واقعاً تجربه دارید بنویسید؛ در غیر این صورت خالی بگذارید.',{rows:2}),fChecks(s,'concepts','مفاهیم این مرحله',consOpts()));}}));
-     }}));
-   b.append(sub('مفاهیم (واژه‌نامه)'));
-   b.append(fList(M.process.concepts,{noun:'مفهوم',add:'+ افزودن مفهوم',title:function(c){return c.title;},blank:function(){return {key:'',title:'',sub:'',text:''};},
-     build:function(c,x){x.append(fText(c,'title','عنوان مفهوم','مثلاً: ATS'),fText(c,'sub','زیرعنوان','مثلاً: سامانه‌ی ردیابی متقاضیان'),fArea(c,'text','توضیح','برای شروع پاراگراف تازه، یک خط خالی بگذارید.',{rows:6}));}}));
+ {id:'features',icon:'🧩',title:'ابزارها و فرآیندها (نمایش یا پنهان)',build:function(b){
+   b.append(help('محتوای «ابزارها» (محاسبه‌گر مالیات و بیمه) و «فرآیندها» (دانشنامه‌ی کاری) آماده و عمومی است و قابل ویرایش نیست؛ فقط تعیین کنید در صفحه‌ی اصلی دیده شوند یا نه.'));
+   b.append(fChk(M.features,'tools','🧮 دکمه‌ی «ابزارها» نمایش داده شود'));
+   b.append(fChk(M.features,'process','🔄 دکمه‌ی «فرآیندها» نمایش داده شود'));
  }}
 ];
 
